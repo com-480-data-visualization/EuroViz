@@ -3,7 +3,7 @@
 | Student's name | SCIPER |
 | -------------- | ------ |
 | Linn Rågmo | 404098 |
-| Isak Hansson | 404090|
+| Isac Hansson | 404090|
 | William  Frisk |404088 |
 
 [Milestone 1](#milestone-1) • [Milestone 2](#milestone-2) • [Milestone 3](#milestone-3)
