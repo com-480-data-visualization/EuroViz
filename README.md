@@ -25,6 +25,7 @@ Data on contestants:
 
 - Contest year
 - Country
+- Country code
 - Artist
 - Song title
 - Participated in semi final
@@ -45,8 +46,8 @@ Data on votes:
 
 - Contest year
 - Round
-- Country that is giving the points
-- Country that is receiving the points
+- Country code that is giving the points
+- Country code that is receiving the points
 - Number of given points
 
 Data on betting odds:
@@ -73,10 +74,28 @@ This visual aid for analysis is mainly targeted to Eurovision watchers and fans.
 
 ### Exploratory Data Analysis
 
-> Pre-processing of the data set you chose
->
-> - Show some basic statistics and get insights about the data
+We spent some time pre-processing the data. Since the contest has been running since 1956, various changes have occurred, such as the number of participants, the introduction of semifinals, and evolving voting rules. These changes have led to sparse data with many null values, as some information is available only for certain years. To handle this, we structured our model by year so we can easily manage the differing conditions for each year. Resulting in: 
+```json
+{
+  "year": {
+    "country": {
+      "participated": Boolean, 
+      "metadata": { 
+        ...
+      },
+      "votes": {
+        "total_votes": Number,
+        "jury_votes": Number,
+        "tele_votes": Number
+      }
+    }
+  }
+}
+```
 
+ The data is collected from 1957-2023 and contains 54 different countries, which together account for 1,734 song entries. We have a lot of null values when the competition changes rules, for example fields like "Place in semi-final" and "Score in semi-final" are null for all years prior to the introduction of the semi-final rounds.
+
+See all more statistics and pre-processing [here](https://github.com/com-480-data-visualization/EuroViz/blob/master/pre-processing/stats.ipynb).
 ### Related work
 
 This data has been used before to create visualizations about the contest. The previous work we have been able to find has presented, for example, data on participating countries, what makes a winning song and high-level overviews of country-country voting relations, see for example https://flourish.studio/blog/visualizing-eurovision-data/ and https://www.yellowfinbi.com/blog/data-visualization-shows-most-successful-eurovision-nations.
