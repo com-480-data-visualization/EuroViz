@@ -110,6 +110,40 @@ We have not explored the dataset in any other context besides this course.
 
 **10% of the final grade**
 
+### Resources
+
+All of the lectures have provided us with a solid foundation in data visualization, enabling us to create our Eurovision map. However, the following are the most relevant:
+
+- Lecture on Practical Maps: GeoJSON/TopoJSON to describe content of the geographical map and D3 projection for drag and zoom functionality
+- Lecture on Perception and Color: The theory from the lecture will be used to create intuitive and effective data visualizations
+
+### Goal
+
+Our main goal is to implement an interactive map of Europe where users can click or hover over a country to show the top countries the selected country has voted for. The MVP just involves aggregating the total votes over all time or selecting a single contest year. See sketch below:
+
+<img src="./sketches/main-no-select.jpg" alt="Main idea with no country selected" width="500"/>
+
+And after a country has been selected:
+
+<img src="./sketches/main-country-selected.jpg" alt="Main idea with a country selected" width="500"/>
+
+This core visualization can itself be broken down into independent parts to implement.
+
+- We need to implement a map of Europe where we can select countries by clicking or hovering over them.
+- We need to implement arrows that can go from a given start country to a given destination country on the map and change size (or similar) depending on votes.
+- We also need to implement a selector for years that filters the data based on a given contest year.
+
+However, this MVP can be developed into a more extensive visualization. Here are some stretch goals we aim for after the main visualization is complete:
+
+- We would like for the user to be able to filter on a range of years instead of just a single year. That way the user could compare say 1960-1970 and 2000-2010 to see how it differs.
+- We would also like some similar but different map visualizations where we color each country based on how many accumulative votes they’ve gotten over a range of years, how many times they won over a range of years and how many times they’ve finished last over a range of years. See sketch below (note that the colors would be on a country by country basis in the final version):
+
+  <img src="./sketches/color-gradient.jpg" alt="Gradient colored map" width="500"/>
+
+- Another interesting visualization to make would be a line or bar graph where the user could select two countries and we would show how much the two countries have voted for each other through history.
+
+If there is even more time available to us we could move on from the vote and map part of the dataset and visualization and move on to analyzing other parts of the data. For example the lyrics of songs where we could analyze what languages tend to perform best or what words are most common in winning songs. This could be visualized quite simply in bar graphs. We could also graph differences in jury and televotes for countries by year.
+
 ## Milestone 3 (30th May, 5pm)
 
 **80% of the final grade**
