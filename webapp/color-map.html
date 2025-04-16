@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Color Map - EuroViz</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <h1 class="logo">EuroViz</h1>
+      <nav>
+        <ul>
+          <li><a href="color-map.html" class="nav-link">Color Map</a></li>
+          <li><a href="voting-map.html" class="nav-link">Voting Map</a></li>
+          <li><a href="index.html" class="nav-link">About Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h2>Color Map</h2>
+    <div id="color-map-container"></div>
+  </main>
+
+  <footer>
+    <p>EuroViz &copy; 2025</p>
+  </footer>
+
+  <script type="module" src="js/sharedData.js"></script>
+  <script type="module" src="js/colorMap.js"></script>
+
+  <script>
+    const currentPage = window.location.pathname.split('/').pop();
+    document.querySelectorAll('.nav-link').forEach(link => {
+      if (link.getAttribute('href') === currentPage) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+</body>
+</html>

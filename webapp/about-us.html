@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Voting Map - EuroViz</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <h1 class="logo" href="index.html" >EuroViz</h1>
+      <nav>
+        <ul>
+          <li><a href="color-map.html" class="nav-link">Color Map</a></li>
+          <li><a href="voting-map.html" class="nav-link">Voting Map</a></li>
+          <li><a href="about-us.html" class="nav-link">About Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h2>About Us</h2>
+    Hi! My name is Linn, and I’m a huge Eurovision fan. I absolutely love everything about the competition—the music, the spectacular performances, the over-the-top costumes, and the incredible party atmosphere. There’s something so magical about how Eurovision brings people together from all over Europe (and beyond!) to celebrate music, diversity, and creativity. I look forward to it every year, from the national selections to the grand final. Whether it’s the emotional ballads, the wild dance tracks, or the unexpected quirky acts, I enjoy it all. Eurovision isn’t just a contest—it’s an experience, and I wouldn’t miss it for the world!
+
+  </main>
+
+  <footer>
+    <p>EuroViz &copy; 2025</p>
+  </footer>
+  <script>
+    const currentPage = window.location.pathname.split('/').pop();
+    document.querySelectorAll('.nav-link').forEach(link => {
+      if (link.getAttribute('href') === currentPage) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+</body>
+</html>
