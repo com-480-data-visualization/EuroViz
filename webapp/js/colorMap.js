@@ -1,11 +1,50 @@
-
 window.addEventListener("DOMContentLoaded", () => {
-  const container = document.getElementById("color-map-container");
+  const container = d3.select("#color-map-container");
   if (container) {
-    const message = document.createElement("p");
-    message.textContent = "FROM colorMap.js";
-    container.appendChild(message);
+    const svg = d3.select("#geo-map");
+
+    const containerWidth = container.node().getBoundingClientRect().width;
+    const containerHeight = containerWidth * 0.75;
+  
+    svg.attr("width", containerWidth).attr("height", containerHeight);
+  
+    const projection = d3.geoMercator()
+      .scale(containerWidth / 6)
+      .translate([containerWidth / 6, containerHeight / 1.8]);
+  
+    const path = d3.geoPath().projection(projection);
+
+    const mapGroup = svg.append("g");
+    d3.json("data/map.geo.json")
+    .then(geoData => {
+      mapGroup.selectAll("path")
+        .data(geoData.features)
+        .enter()
+        .append("path")
+        .attr("d", path)
+        .attr("stroke", "#fff");
+    })
+    .catch(error => console.error("Error loading GeoJSON data:", error));
+    const zoom = d3.zoom()
+    .scaleExtent([1, 8])
+    .on("zoom", (event) => {
+      mapGroup.attr("transform", event.transform);
+    });
+
+  svg.call(zoom);
   } else {
     console.warn("Couldn't find #color-map-container");
   }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const yearSelect = document.getElementById("year-select");
+  const infoDisplayTitle = document.querySelector("#info-display h3");
+
+  let selectedYear = yearSelect.value;
+  infoDisplayTitle.textContent = selectedYear; 
+  yearSelect.addEventListener("change", (event) => {
+    selectedYear = event.target.value;
+    infoDisplayTitle.textContent = selectedYear; 
+  });
 });

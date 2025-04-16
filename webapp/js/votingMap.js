@@ -39,3 +39,15 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const yearSelect = document.getElementById("year-select");
+  const infoDisplayTitle = document.querySelector("#info-display h3");
+
+  let selectedYear = yearSelect.value;
+  infoDisplayTitle.textContent = selectedYear; 
+  yearSelect.addEventListener("change", (event) => {
+    selectedYear = event.target.value;
+    infoDisplayTitle.textContent = selectedYear; 
+  });
+});
+

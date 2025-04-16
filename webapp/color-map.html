@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Color Map - EuroViz</title>
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/color-map.css">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -12,38 +14,39 @@
 <body>
   <div id="header-placeholder"></div>
   <main>
-    <h2>Color Map</h2>
-    <div id="color-map-container"></div>
+    <div id="color-map-container">
+      <div id="info-display">
+        <h3></h3>
+        <p>Winner 1</p>
+        <p>Winner 2</p>
+        <p>Winner 3</p>
+        <p>Winner 4</p>
+        <p>Winner 5</p>
+        <p>Winner 6</p>
+        <p>Winner 7</p>
+        <p>Winner 8</p>
+        <p>Winner 9</p> 
+        <p>Winner 10</p>
+      </div>
+      <div id="year-panel">
+        <h4>Year</h4>
+        <select id="year-select">
+          <option value="2023">2023</option>
+          <option value="2022">2022</option>
+          <option value="2021">2021</option>
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+        </select>
+      </div>
+      <svg id="geo-map" preserveAspectRatio="xMidYMid meet" viewBox="0 0 800 600"></svg>
+    </div>
   </main>
 
-  <footer>
-    <p>EuroViz &copy; 2025</p>
-  </footer>
+  <div id="footer-placeholder"></div>
 
   <script type="module" src="js/sharedData.js"></script>
   <script type="module" src="js/colorMap.js"></script>
-  <div id="footer-placeholder"></div>
-  <script>
-    fetch('header.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('header-placeholder').innerHTML = data;
-      })
-      .catch(error => console.error('Error loading header:', error));
-
-    const currentPage = window.location.pathname.split('/').pop();
-    document.querySelectorAll('.nav-link').forEach(link => {
-      if (link.getAttribute('href') === currentPage) {
-        link.classList.add('active');
-      }
-    });
-
-    fetch('footer.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('footer-placeholder').innerHTML = data;
-    })
-    .catch(error => console.error('Error loading footer:', error));
-  </script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+ 
 </body>
 </html>

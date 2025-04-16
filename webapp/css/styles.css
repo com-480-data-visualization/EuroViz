@@ -7,13 +7,21 @@ body {
     color: #333;
   }
   
-  .header-container {
+  header {
+    position: fixed; /* Fix the header at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 10; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  header .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: auto;
-    padding: 0 1em;
+    padding: 1em 2em;
   }
   
   .logo {
@@ -34,16 +42,20 @@ body {
     color: black;
     padding: 0.5em 1em;
     border-radius: 5px;
+    transition: all 0.3s ease; 
   }
   
-  .nav-link:hover,
+  .nav-link:hover {
+    text-decoration: underline;
+  }
   .nav-link.active {
-    background-color: #555;
+    background-color: rgba(0, 0, 0, 0.1);
+    text-decoration: solid;
   }
-  
-  
+  .nav-link.active:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
   main {
-    padding: 2em;
     min-height: 60vh;
   }
   
