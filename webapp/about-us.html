@@ -4,21 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Voting Map - EuroViz</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <header>
-    <div class="header-container">
-      <h1 class="logo" href="index.html" >EuroViz</h1>
-      <nav>
-        <ul>
-          <li><a href="color-map.html" class="nav-link">Color Map</a></li>
-          <li><a href="voting-map.html" class="nav-link">Voting Map</a></li>
-          <li><a href="about-us.html" class="nav-link">About Us</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <div id="header-placeholder"></div>
 
   <main>
     <h2>About Us</h2>
@@ -26,16 +15,27 @@
 
   </main>
 
-  <footer>
-    <p>EuroViz &copy; 2025</p>
-  </footer>
+  <div id="footer-placeholder"></div>
   <script>
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading header:', error));
+
     const currentPage = window.location.pathname.split('/').pop();
     document.querySelectorAll('.nav-link').forEach(link => {
       if (link.getAttribute('href') === currentPage) {
         link.classList.add('active');
       }
     });
+    fetch('footer.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('footer-placeholder').innerHTML = data;
+    })
+    .catch(error => console.error('Error loading footer:', error));
   </script>
 </body>
 </html>
