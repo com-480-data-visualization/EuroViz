@@ -4,7 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Voting Map - EuroViz</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/about-us.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
@@ -21,22 +25,27 @@
   </header>
 
   <main>
-    <h2>About Us</h2>
+    <div class="top-container">
+      <h2 class="title">We are EuroViz</h2>
+      <div class="info-text">At EuroViz, we turn Eurovision data into clear and interactive visuals — making voting trends easy and fun to explore for everyone.</div>
+    </div> 
+    
+
     <div class="team">
       <div class="team-member" onclick="showInfo(this)">
         <div class="name">Isac Hansson</div>
-        <img src="isac.jpg">
-        <div class="about">Chalmers student at exchange at EPFL</div>
+        <img src="images/isac.jpg">
+        <div class="about">Chalmers student exchanging at EPFL</div>
       </div>
       <div class="team-member" onclick="showInfo(this)">
         <div class="name">William Frisk</div>
-        <img src="william.jpg">
-        <div class="about">Chalmers student at exchange at EPFL</div>
+        <img src="images/william.jpg">
+        <div class="about">Chalmers student exchanging at EPFL</div>
       </div>
       <div class="team-member" onclick="showInfo(this)">
         <div class="name">Linn Rågmo</div>
-        <img src="linn.jpg">
-        <div class="about">KTH student at exchange at EPFL</div>
+        <img src="images/linn.jpg">
+        <div class="about">KTH student exchanging at EPFL</div>
       </div>
 
     </div>

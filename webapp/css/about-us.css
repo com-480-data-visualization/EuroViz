@@ -1,3 +1,31 @@
+  .top-container {
+    display: flex;
+    align-items: center;
+    gap: 300px;
+    margin-top: 10px;
+    margin-left: 40px;
+  }  
+
+  .title {
+    font-size: 4em;
+    font-family: "Gotham Bold";
+    opacity: 0;
+    transform: scale(0.8);
+    animation: zoomFadeIn 3s ease-out forwards, pulse 4s ease-in-out infinite;
+    animation-delay: 0s, 3s;
+    white-space: nowrap;
+  }
+  
+  .info-text {
+    font-size: 1.2em;
+    max-width: 500px;
+    text-align: left;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: slideIn 0.8s forwards;
+    animation-delay: 0.5s;
+  }
+
   .team {
     display: flex;
     justify-content: center;
@@ -47,8 +75,6 @@
     opacity: 0;
     transform: translateY(-20px);
   }
-
-  
   .team-member.active .about {
     display: block;
     animation: slideDown 0.4s ease forwards;
@@ -65,5 +91,21 @@
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+  
+  @keyframes zoomFadeIn {
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.02);
     }
   }
