@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Voting Map - EuroViz</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/about-us.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main>
+    <div class="top-container">
+      <h2 class="title">We are EuroViz</h2>
+      <div class="info-text">At EuroViz, we turn Eurovision data into clear and interactive visuals — making voting trends easy and fun to explore for everyone.</div>
+    </div> 
+    
+
+    <div class="team">
+      <div class="team-member" onclick="showInfo(this)">
+        <div class="name">Isac Hansson</div>
+        <img src="images/isac.jpg">
+        <div class="about">Chalmers student exchanging at EPFL</div>
+      </div>
+      <div class="team-member" onclick="showInfo(this)">
+        <div class="name">William Frisk</div>
+        <img src="images/william.jpg">
+        <div class="about">Chalmers student exchanging at EPFL</div>
+      </div>
+      <div class="team-member" onclick="showInfo(this)">
+        <div class="name">Linn Rågmo</div>
+        <img src="images/linn.jpg">
+        <div class="about">KTH student exchanging at EPFL</div>
+      </div>
+
+    </div>
+    
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script>
+    const currentPage = window.location.pathname.split('/').pop();
+    document.querySelectorAll('.nav-link').forEach(link => {
+      if (link.getAttribute('href') === currentPage) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+
+<script>
+  function showInfo(element) {
+    document.querySelectorAll('.team-member').forEach(person => {
+      if (person !== element) person.classList.remove('active');
+    });
+    element.classList.toggle('active');
+  }
+
+  function loadPlaceholders(file, placeholderId) {
+  fetch(file)
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById(placeholderId).innerHTML = data;
+    })
+    .catch(error => console.error(`Error loading ${file}:`, error));
+}
+
+    loadPlaceholders('header.html', 'header-placeholder');
+    loadPlaceholders('footer.html', 'footer-placeholder');
+</script>
+
+</body>
+</html>

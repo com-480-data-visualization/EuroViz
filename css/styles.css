@@ -1,0 +1,68 @@
+/* styles.css */
+body {
+    font-family: "Montserrat", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  header {
+    position: fixed; /* Fix the header at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 10; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  header .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 2em;
+  }
+  
+  .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1em;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: black;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    transition: all 0.3s ease; 
+  }
+  
+  .nav-link:hover {
+    text-decoration: underline;
+  }
+  .nav-link.active {
+    background-color: rgba(0, 0, 0, 0.1);
+    text-decoration: solid;
+  }
+  .nav-link.active:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  main {
+    min-height: 60vh;
+  }
+  
+  #content {
+    background-color: white;
+    padding: 1em;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
