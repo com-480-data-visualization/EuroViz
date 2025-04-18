@@ -2,10 +2,8 @@ name: CD
 on:
   push:
     branches: [ "master" ]
-    paths: ['.github/*', 'webapp/*']
   pull_request:
     branches: [ "master" ]
-    paths: ['.github/*', 'webapp/*']
     
 permissions:
   contents: write
