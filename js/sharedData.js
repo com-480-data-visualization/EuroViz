@@ -13,7 +13,7 @@ function loadPlaceholders(file, placeholderId) {
 
   document.addEventListener("DOMContentLoaded", () => {
     const yearSelect = document.getElementById("year-select");
-    const startYear = 1957; 
+    const startYear = 2021; 
     const endYear = 2023; 
   
     for (let year = endYear; year >= startYear; year--) {
