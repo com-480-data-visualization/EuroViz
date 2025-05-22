@@ -51,26 +51,7 @@
     });
   </script>
 
-<script>
-  function showInfo(element) {
-    document.querySelectorAll('.team-member').forEach(person => {
-      if (person !== element) person.classList.remove('active');
-    });
-    element.classList.toggle('active');
-  }
-
-  function loadPlaceholders(file, placeholderId) {
-  fetch(file)
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById(placeholderId).innerHTML = data;
-    })
-    .catch(error => console.error(`Error loading ${file}:`, error));
-}
-
-    loadPlaceholders('header.html', 'header-placeholder');
-    loadPlaceholders('footer.html', 'footer-placeholder');
-</script>
+  <script type="module" src="js/sharedData.js"></script>
 
 </body>
 </html>
