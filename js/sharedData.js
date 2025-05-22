@@ -1,14 +1,21 @@
+function loadPlaceholders(file, Id, callback) {
+  fetch(file)
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById(Id).innerHTML = data;
+      if (callback) callback();
+    })
+    .catch(error => console.error(`Error loading ${file}:`, error));
+}
 
-function loadPlaceholders(file, placeholderId) {
-    fetch(file)
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById(placeholderId).innerHTML = data;
-      })
-      .catch(error => console.error(`Error loading ${file}:`, error));
+loadPlaceholders('header.html', 'header-placeholder', () => {
+  const currentPage = window.location.pathname.split('/').pop();
+  const activeLink = document.querySelector(`.nav-link[href="${currentPage}"]`);
+  if (activeLink) {
+    activeLink.classList.add('active');
   }
-  
-  loadPlaceholders('header.html', 'header-placeholder');
+
+});
   loadPlaceholders('footer.html', 'footer-placeholder');
 
   document.addEventListener("DOMContentLoaded", () => {

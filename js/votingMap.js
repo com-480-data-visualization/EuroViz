@@ -109,7 +109,7 @@ window.addEventListener("DOMContentLoaded", () => {
     path = d3.geoPath().projection(projection);
 
     mapGroup = svg.append("g");
-    linkGroup = svg.append("g").attr("id", "relation-lines");
+    linkGroup = svg.append("g").attr("id", "line");
 
     const zoom = d3.zoom()
       .scaleExtent([1, 8])
@@ -140,7 +140,7 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 
-async function handleSelectedCountry(countryName, projection, allFeatures) {
+async function handleSelectedCountry(countryName, projection) {
 
   if (selectedCountry === countryName) {
     updateInfoDisplay(selectedYear, null, null);
@@ -157,19 +157,16 @@ async function handleSelectedCountry(countryName, projection, allFeatures) {
 
   const pointsGivenToCountries = countryPointsByYear[selectedYear]?.[countryName];
   if (!pointsGivenToCountries) {
-    console.error("No related countries found for:" + countryName);
+    console.error("No countries found:" + countryName);
     return;
   }
 
   updateInfoDisplay(selectedYear ,selectedCountry, pointsGivenToCountries);
 
-  Object.keys(pointsGivenToCountries).forEach(relatedName => {
+  Object.keys(pointsGivenToCountries).forEach(givenTo => {
 
-     getCaptialCoordinates(capitals, relatedName, projection).then((coords) => {
-      if (!coords) {
-        console.error("No coordinates found for:" + relatedName);
-        return;
-      }      
+     getCaptialCoordinates(capitals, givenTo, projection).then((coords) => {
+    
       linkGroup
       .append("line")
       .attr("x1", selectedCapitalCoordinates[0])
@@ -186,12 +183,9 @@ async function handleSelectedCountry(countryName, projection, allFeatures) {
 
 function updateInfoDisplay(year, countryName, pointsGivenToCountries) {
   const infoDisplay = document.getElementById("info-display");
-  if (!infoDisplay) {
-    console.error("Info display element not found.");
-    return;
-  }
+
   infoDisplay.innerHTML = "";
-  if (countryName === null) {
+  if (countryName === null && pointsGivenToCountries == null) {
     const topFive = topFiveCountriesByYear[year];
     
     const title = document.createElement("h3");
@@ -224,10 +218,8 @@ function updateInfoDisplay(year, countryName, pointsGivenToCountries) {
     p.style.cursor = "pointer"; 
 
     p.addEventListener("click", () => {
-      handleSelectedCountry(country, path.projection(), []); 
+      handleSelectedCountry(country, path.projection()); 
     });
-
-
     infoDisplay.appendChild(p);
   });
 }
@@ -259,14 +251,9 @@ async function getCaptialCoordinates(capitals, country, projection) {
 }
 
 const loadCountryCoordinates = async () => {
-  try {
     const response = await fetch('./data/capitals.json');
     const countryCoordinates = await response.json();
-
-    return countryCoordinates; // This will return the parsed object
-  } catch (error) {
-    console.error('Error loading country coordinates:', error);
-  }
+    return countryCoordinates; 
 };
 
 function renderMap(year, projection) {
@@ -274,9 +261,10 @@ function renderMap(year, projection) {
     .then(geoData => {
       const features = geoData.features;
 
-      // Clear previous paths and lines
       mapGroup.selectAll("*").remove();
+      // Clear the lines
       linkGroup.selectAll("*").remove();
+
       selectedCountry = null;
 
       mapGroup.selectAll("path")
@@ -290,12 +278,9 @@ function renderMap(year, projection) {
         .on("click", (event, d) => {
           if (countryPointsByYear[year]?.[d.properties.name_en]) {
             const countryName = d.properties.name_en;
-            handleSelectedCountry(countryName, projection, features);
+            handleSelectedCountry(countryName, projection);
           }
         });
     })
-    .catch(error => console.error("Error loading GeoJSON data:", error));
+    .catch(e => console.error("Error loading data", e));
 }
-
-
-
