@@ -200,7 +200,7 @@ async function handleSelectedCountry(countryName, projection) {
         .attr("x2", coords[0])
         .attr("y2", coords[1])
         .attr("stroke", "black")
-        .attr("stroke-width", Math.max(1, points / 6)) // Optional: scale width by points
+        .attr("stroke-width", Math.max(1, points / 6))
         .attr("marker-end", "url(#arrow)");
     });
   });
