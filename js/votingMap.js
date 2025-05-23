@@ -1,71 +1,89 @@
-const countryPointsByYear = {
-  2023: {
-    Switzerland: { Germany: 4, France: 3, Italy: 3, Austria: 2 },
-    Netherlands: { Belgium: 4, Germany: 3 },
-    Germany: { France: 4, Italy: 3, Spain: 2 },
-    France: { Germany: 4, "United Kingdom": 3, Spain: 2 },
-    Italy: { Germany: 4, France: 3, Spain: 2 },
-    Spain: { Italy: 4, France: 3, "United Kingdom": 2 },
-    "United Kingdom": { Germany: 5, Italy: 3, France: 2 },
-  },
-  2022: {
-    Israel: { Cyprus: 3, Greece: 2 },
-    Greece: { Turkey: 4, Bulgaria: 3, Cyprus: 3 },
-    Turkey: { Greece: 4, Bulgaria: 3, Armenia: 2, Georgia: 2 },
-    Morocco: { Spain: 3 },
-    Cyprus: { Greece: 3, Israel: 3 },
-    Iceland: { Norway: 3, Denmark: 2 },
-    Croatia: { Slovenia: 4, Hungary: 3, Bosnia: 3 },
-    "Bosnia & Herzegovina": { Croatia: 3, Serbia: 3 },
-    Slovenia: { Austria: 4, Italy: 2, Croatia: 4 },
-    Switzerland: { Belgium: 4, France: 3, Germany: 2 },
-    Netherlands: { Belgium: 5, France: 3, Germany: 2 },
-    Belgium: { France: 5, Germany: 3, Netherlands: 2 },
-    France: { Belgium: 4, Germany: 3, Switzerland: 2 },
-    Germany: { France: 4, Belgium: 3, Netherlands: 2 },
-  },
-  2021: {
-    Norway: { Sweden: 4, Denmark: 2, Finland: 2 },
-    Yugoslavia: { Serbia: 4, Croatia: 3, Bosnia: 3 },
-    Spain: { Portugal: 4, France: 3, Andorra: 2 },
-    Finland: { Sweden: 3, Norway: 2, Estonia: 3 },
-    Portugal: { Spain: 4 },
-    Ireland: { "United Kingdom": 4 },
-    Malta: { Italy: 3 },
-    Sweden: { Norway: 4, Denmark: 3, Finland: 2 },
-    Denmark: { Sweden: 4, Norway: 3, Finland: 2 },
-    Iceland: { Denmark: 4, Sweden: 3, Norway: 2 },
-  }
-};
-
-
-const topFiveCountriesByYear = {
-  2023: [
-    { country: "Germany", position: 1 , song : "Song A", artist : "Artist A"},
-    { country: "France", position: 2 , song : "Song B", artist : "Artist B"},
-    { country: "Italy", position: 3 , song : "Song C", artist : "Artist C"},
-    { country: "Spain", position: 4 , song : "Song D", artist : "Artist D"},
-    { country: "United Kingdom", position: 5 , song : "Song E", artist : "Artist E"},
-  ],
-  2022: [
-    { country: "Switzerland", position: 1 , song : "Song F", artist : "Artist F"},
-    { country: "Netherlands", position: 2 , song : "Song G", artist : "Artist G"},
-    { country: "Belgium", position: 3 , song : "Song H", artist : "Artist H"},
-    { country: "France", position: 4 , song : "Song I", artist : "Artist I"},
-    { country: "Germany", position: 5 , song : "Song J", artist : "Artist J"},
-  ],
-  2021: [
-    { country: "Norway", position: 1 , song : "Song K", artist : "Artist K"},
-    { country: "Sweden", position: 2 , song : "Song L", artist : "Artist L"},
-    { country: "Denmark", position: 3 , song : "Song M", artist : "Artist M"},
-    { country: "Finland", position: 4 , song : "Song N", artist : "Artist N"},
-    { country: "Iceland", position: 5 , song : "Song O", artist : "Artist O"},
-  ],
-};
-
 let selectedYear = 2023;
 let svg, path, linkGroup, mapGroup;
 let selectedCountry = null;
+
+// Mapping of country codes to country names
+const country_dict = {
+    "al": "Albania",
+    "am": "Armenia",
+    "au": "Australia",
+    "at": "Austria",
+    "az": "Azerbaijan",
+    "by": "Belarus",
+    "be": "Belgium",
+    "ba": "Bosnia & Herzegovina",
+    "bg": "Bulgaria",
+    "hr": "Croatia",
+    "cy": "Cyprus",
+    "cz": "Czech Republic",
+    "dk": "Denmark",
+    "ee": "Estonia",
+    "fi": "Finland",
+    "fr": "France",
+    "ge": "Georgia",
+    "de": "Germany",
+    "gr": "Greece",
+    "hu": "Hungary",
+    "is": "Iceland",
+    "ie": "Ireland",
+    "il": "Israel",
+    "it": "Italy",
+    "lv": "Latvia",
+    "lt": "Lithuania",
+    "lu": "Luxembourg",
+    "mt": "Malta",
+    "md": "Moldova",
+    "mc": "Monaco",
+    "me": "Montenegro",
+    "ma": "Morocco",
+    "nl": "Netherlands",
+    "mk": "North Macedonia",
+    "no": "Norway",
+    "pl": "Poland",
+    "pt": "Portugal",
+    "ro": "Romania",
+    "ru": "Russia",
+    "sm": "San Marino",
+    "rs": "Serbia",
+    "cs": "Serbia & Montenegro",
+    "sk": "Slovakia",
+    "si": "Slovenia",
+    "es": "Spain",
+    "se": "Sweden",
+    "ch": "Switzerland",
+    "tr": "Turkey",
+    "ua": "Ukraine",
+    "gb": "United Kingdom",
+    "yu": "Yugoslavia"
+}
+
+
+let countryPointsByYear = {};
+
+// Load the CSV voting data
+d3.csv('../pre-processing/votes.csv').then(function(data) {
+  data.forEach(d => {
+    const year = +d.year;
+    const from = country_dict[d.from_country] || d.from_country;
+    const to = country_dict[d.to_country] || d.to_country;
+    const points = +d.total_points || 0;
+
+    if (!countryPointsByYear[year]) {
+      countryPointsByYear[year] = {};
+    }
+    if (!countryPointsByYear[year][from]) {
+      countryPointsByYear[year][from] = {};
+    }
+    countryPointsByYear[year][from][to] = points;
+  });
+  renderMap(selectedYear, path.projection());
+
+}).catch(function(error) {
+  console.error('Error in loading voting data:', error);
+});
+
+
+
 
 window.addEventListener("DOMContentLoaded", () => {
   const container = d3.select("#voting-map-container");
@@ -161,24 +179,31 @@ async function handleSelectedCountry(countryName, projection) {
     return;
   }
 
-  updateInfoDisplay(selectedYear ,selectedCountry, pointsGivenToCountries);
+  // Get votes from from selectedCountry from selectedYear
+  const votes = countryPointsByYear[selectedYear][selectedCountry] || {};
 
-  Object.keys(pointsGivenToCountries).forEach(givenTo => {
+  // Take top 5 most voted countries
+  const top5 = Object.entries(votes)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 5); 
+  
+  updateInfoDisplay(selectedYear ,selectedCountry, top5);
 
-     getCaptialCoordinates(capitals, givenTo, projection).then((coords) => {
-    
+  // Draw arrows to top 5 countries
+  top5.forEach(([toCountry, points]) => {
+    getCaptialCoordinates(capitals, toCountry, projection).then((coords) => {
+      if (!coords || !selectedCapitalCoordinates) return;
       linkGroup
-      .append("line")
-      .attr("x1", selectedCapitalCoordinates[0])
-      .attr("y1", selectedCapitalCoordinates[1])
-      .attr("x2", coords[0])
-      .attr("y2", coords[1])
-      .attr("stroke", "black")
-      .attr("stroke-width", 1)
-      .attr("marker-end", "url(#arrow)")
-      });
+        .append("line")
+        .attr("x1", selectedCapitalCoordinates[0])
+        .attr("y1", selectedCapitalCoordinates[1])
+        .attr("x2", coords[0])
+        .attr("y2", coords[1])
+        .attr("stroke", "black")
+        .attr("stroke-width", Math.max(1, points / 6))
+        .attr("marker-end", "url(#arrow)");
     });
-
+  });
 }
 
 function updateInfoDisplay(year, countryName, pointsGivenToCountries) {
@@ -186,17 +211,17 @@ function updateInfoDisplay(year, countryName, pointsGivenToCountries) {
 
   infoDisplay.innerHTML = "";
   if (countryName === null && pointsGivenToCountries == null) {
-    const topFive = topFiveCountriesByYear[year];
+    //const topFive = topFiveCountriesByYear[year];
     
     const title = document.createElement("h3");
     title.textContent = `Top 5 in ${year}:`;
     infoDisplay.appendChild(title);
-    topFive.forEach(({ country, position, song, artist }) => {
-      const p = document.createElement("p");
-      p.textContent = `${position}. ${country} - ${song} by ${artist}`;
-      p.classList.add("no-hover"); 
-      infoDisplay.appendChild(p);
-    });
+    // topFive.forEach(({ country, position, song, artist }) => {
+    //   const p = document.createElement("p");
+    //   p.textContent = `${position}. ${country} - ${song} by ${artist}`;
+    //   p.classList.add("no-hover"); 
+    //   infoDisplay.appendChild(p);
+    // });
     const p = document.createElement("p");
     p.textContent = "Click on a country to see who they voted for";
     p.classList.add("info-footer", "no-hover");
