@@ -1,4 +1,5 @@
 let selectedYear = 2023;
+let countryPointsByYear;
 let svg, path, linkGroup, mapGroup;
 let selectedCountry = null;
 
@@ -58,7 +59,9 @@ const country_dict = {
 }
 
 
-let countryPointsByYear = {};
+let countryPointsByYearTotal = {};
+let countryPointsByYearTele = {};
+let countryPointsByYearJury = {};
 
 // Load the CSV voting data
 d3.csv('../pre-processing/votes.csv').then(function(data) {
@@ -66,22 +69,39 @@ d3.csv('../pre-processing/votes.csv').then(function(data) {
     const year = +d.year;
     const from = country_dict[d.from_country] || d.from_country;
     const to = country_dict[d.to_country] || d.to_country;
-    const points = +d.total_points || 0;
 
-    if (!countryPointsByYear[year]) {
-      countryPointsByYear[year] = {};
-    }
-    if (!countryPointsByYear[year][from]) {
-      countryPointsByYear[year][from] = {};
-    }
-    countryPointsByYear[year][from][to] = points;
+    // Load total points
+    const totalPoints = +d.total_points || 0;
+    if (!countryPointsByYearTotal[year]) countryPointsByYearTotal[year] = {};
+    if (!countryPointsByYearTotal[year][from]) countryPointsByYearTotal[year][from] = {};
+    countryPointsByYearTotal[year][from][to] = totalPoints;
+
+    // Load tele points
+    const telePoints = +d.tele_points || 0;
+    if (!countryPointsByYearTele[year]) countryPointsByYearTele[year] = {};
+    if (!countryPointsByYearTele[year][from]) countryPointsByYearTele[year][from] = {};
+    countryPointsByYearTele[year][from][to] = telePoints;
+
+    // Load jury points
+    const juryPoints = +d.jury_points || 0;
+    if (!countryPointsByYearJury[year]) countryPointsByYearJury[year] = {};
+    if (!countryPointsByYearJury[year][from]) countryPointsByYearJury[year][from] = {};
+    countryPointsByYearJury[year][from][to] = juryPoints;
   });
+
+  countryPointsByYear = countryPointsByYearTotal;
+
   renderMap(selectedYear, path.projection());
 
 // Add years to the year select dropdown
 const yearSelect = document.getElementById("year-select");
 if (yearSelect) {
-  const years = Object.keys(countryPointsByYear).map(Number).sort((a, b) => a - b);
+  const yearsSet = new Set([
+    ...Object.keys(countryPointsByYearTotal),
+    ...Object.keys(countryPointsByYearTele),
+    ...Object.keys(countryPointsByYearJury)
+  ]);
+  const years = Array.from(yearsSet).map(Number).sort((a, b) => a - b);
   yearSelect.innerHTML = "";
   years.forEach(year => {
     const option = document.createElement("option");
@@ -96,7 +116,21 @@ if (yearSelect) {
   console.error('Error in loading voting data:', error);
 });
 
-
+// Event listener for the votes select dropdown
+const votesSelect = document.getElementById("votes-select");
+if (votesSelect) {
+  votesSelect.addEventListener("change", (event) => {
+    if (event.target.value === "countryPointsByYearTotal") {
+      countryPointsByYear = countryPointsByYearTotal;
+    } else if (event.target.value === "countryPointsByYearTele") {
+      countryPointsByYear = countryPointsByYearTele;
+    } else if (event.target.value === "countryPointsByYearJury") {
+      countryPointsByYear = countryPointsByYearJury;
+    }
+    renderMap(selectedYear, path.projection());
+    updateInfoDisplay(selectedYear, null, null);
+  });
+}
 
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -262,20 +296,6 @@ function updateInfoDisplay(year, countryName, pointsGivenToCountries) {
     infoDisplay.appendChild(p);
   });
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  const yearSelect = document.getElementById("year-select");
-  const infoDisplayTitle = document.querySelector("#info-display h3");
-
-  selectedYear = yearSelect.value;
-  infoDisplayTitle.textContent = selectedYear; 
-  yearSelect.addEventListener("change", (event) => {
-    selectedYear = +event.target.value;
-    infoDisplayTitle.textContent = selectedYear;
-    updateInfoDisplay(selectedYear, null, null); 
-    renderMap(selectedYear); 
-  });
-});
 
 async function deselectCountry() {
   selectedCountry = null;
