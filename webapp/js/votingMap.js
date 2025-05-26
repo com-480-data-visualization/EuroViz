@@ -78,6 +78,20 @@ d3.csv('../pre-processing/votes.csv').then(function(data) {
   });
   renderMap(selectedYear, path.projection());
 
+// Add years to the year select dropdown
+const yearSelect = document.getElementById("year-select");
+if (yearSelect) {
+  const years = Object.keys(countryPointsByYear).map(Number).sort((a, b) => a - b);
+  yearSelect.innerHTML = "";
+  years.forEach(year => {
+    const option = document.createElement("option");
+    option.value = year;
+    option.textContent = year;
+    yearSelect.appendChild(option);
+  });
+  yearSelect.value = selectedYear;
+}
+
 }).catch(function(error) {
   console.error('Error in loading voting data:', error);
 });
@@ -237,9 +251,9 @@ function updateInfoDisplay(year, countryName, pointsGivenToCountries) {
   const sortedCountries = Object.entries(pointsGivenToCountries)
     .sort(([, pointsA], [, pointsB]) => pointsB - pointsA); 
 
-  sortedCountries.forEach(([country, points]) => {
+  sortedCountries.forEach(([country, points], counter) => {
     const p = document.createElement("p");
-    p.textContent = `${country}: ${points}`;
+    p.textContent = `${counter + 1}: ${points} points`;
     p.style.cursor = "pointer"; 
 
     p.addEventListener("click", () => {
