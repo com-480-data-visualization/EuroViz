@@ -1,142 +1,19 @@
 let selectedYear = 2023;
-let countryPointsByYear;
+let voteType = "total_points";
 let svg, path, linkGroup, mapGroup;
 let selectedCountry = null;
+let countryPointsByYear = {}
+let yearTopFive = {}
+let projection;
+let capitals;
 
-// Mapping of country codes to country names
-const country_dict = {
-  al: "Albania",
-  am: "Armenia",
-  au: "Australia",
-  at: "Austria",
-  az: "Azerbaijan",
-  by: "Belarus",
-  be: "Belgium",
-  ba: "Bosnia & Herzegovina",
-  bg: "Bulgaria",
-  hr: "Croatia",
-  cy: "Cyprus",
-  cz: "Czech Republic",
-  dk: "Denmark",
-  ee: "Estonia",
-  fi: "Finland",
-  fr: "France",
-  ge: "Georgia",
-  de: "Germany",
-  gr: "Greece",
-  hu: "Hungary",
-  is: "Iceland",
-  ie: "Ireland",
-  il: "Israel",
-  it: "Italy",
-  lv: "Latvia",
-  lt: "Lithuania",
-  lu: "Luxembourg",
-  mt: "Malta",
-  md: "Moldova",
-  mc: "Monaco",
-  me: "Montenegro",
-  ma: "Morocco",
-  nl: "Netherlands",
-  mk: "North Macedonia",
-  no: "Norway",
-  pl: "Poland",
-  pt: "Portugal",
-  ro: "Romania",
-  ru: "Russia",
-  sm: "San Marino",
-  rs: "Serbia",
-  cs: "Serbia & Montenegro",
-  sk: "Slovakia",
-  si: "Slovenia",
-  es: "Spain",
-  se: "Sweden",
-  ch: "Switzerland",
-  tr: "Turkey",
-  ua: "Ukraine",
-  gb: "United Kingdom",
-  yu: "Yugoslavia",
-};
 
-let countryPointsByYearTotal = {};
-let countryPointsByYearTele = {};
-let countryPointsByYearJury = {};
-
-// Load the CSV voting data
-d3.csv("../pre-processing/votes.csv")
-  .then(function (data) {
-    data.forEach((d) => {
-      const year = +d.year;
-      const from = country_dict[d.from_country] || d.from_country;
-      const to = country_dict[d.to_country] || d.to_country;
-
-      // Load total points
-      const totalPoints = +d.total_points || 0;
-      if (!countryPointsByYearTotal[year]) countryPointsByYearTotal[year] = {};
-      if (!countryPointsByYearTotal[year][from])
-        countryPointsByYearTotal[year][from] = {};
-      countryPointsByYearTotal[year][from][to] = totalPoints;
-
-      // Load tele points
-      const telePoints = +d.tele_points || 0;
-      if (!countryPointsByYearTele[year]) countryPointsByYearTele[year] = {};
-      if (!countryPointsByYearTele[year][from])
-        countryPointsByYearTele[year][from] = {};
-      countryPointsByYearTele[year][from][to] = telePoints;
-
-      // Load jury points
-      const juryPoints = +d.jury_points || 0;
-      if (!countryPointsByYearJury[year]) countryPointsByYearJury[year] = {};
-      if (!countryPointsByYearJury[year][from])
-        countryPointsByYearJury[year][from] = {};
-      countryPointsByYearJury[year][from][to] = juryPoints;
-    });
-
-    countryPointsByYear = countryPointsByYearTotal;
-
-    renderMap(selectedYear, path.projection());
-
-    // Add years to the year select dropdown
-    const yearSelect = document.getElementById("year-select");
-    if (yearSelect) {
-      const yearsSet = new Set([
-        ...Object.keys(countryPointsByYearTotal),
-        ...Object.keys(countryPointsByYearTele),
-        ...Object.keys(countryPointsByYearJury),
-      ]);
-      const years = Array.from(yearsSet)
-        .map(Number)
-        .sort((a, b) => a - b);
-      yearSelect.innerHTML = "";
-      years.forEach((year) => {
-        const option = document.createElement("option");
-        option.value = year;
-        option.textContent = year;
-        yearSelect.appendChild(option);
-      });
-      yearSelect.value = selectedYear;
-    }
-  })
-  .catch(function (error) {
-    console.error("Error in loading voting data:", error);
-  });
-
-// Event listener for the votes select dropdown
-const votesSelect = document.getElementById("votes-select");
-if (votesSelect) {
-  votesSelect.addEventListener("change", (event) => {
-    if (event.target.value === "countryPointsByYearTotal") {
-      countryPointsByYear = countryPointsByYearTotal;
-    } else if (event.target.value === "countryPointsByYearTele") {
-      countryPointsByYear = countryPointsByYearTele;
-    } else if (event.target.value === "countryPointsByYearJury") {
-      countryPointsByYear = countryPointsByYearJury;
-    }
-    renderMap(selectedYear, path.projection());
-    updateInfoDisplay(selectedYear, null, null);
-  });
+const voteTypeMap = { "total_points" : "Total votes",
+                      "tele_points"   : "Telephone votes",
+                      "jury_points"   : "Jury votes"
 }
-
+ //// Event Listners
+// Load d3 when app starts
 window.addEventListener("DOMContentLoaded", () => {
   const container = d3.select("#voting-map-container");
   if (!container.empty()) {
@@ -174,14 +51,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
     svg.attr("width", containerWidth).attr("height", containerHeight);
 
-    const projection = d3
-      .geoMercator()
-      .scale(containerWidth / 5)
-      .translate([containerWidth / 5, containerHeight / 1.7]);
+    projection = d3.geoMercator()
+      .scale(containerWidth / 4)
+      .translate([containerWidth / 5, containerHeight / 1.5]);
 
     path = d3.geoPath().projection(projection);
 
     mapGroup = svg.append("g");
+    // for lines
     linkGroup = svg.append("g").attr("id", "line");
 
     const zoom = d3
@@ -194,35 +71,66 @@ window.addEventListener("DOMContentLoaded", () => {
 
     svg.call(zoom);
 
-    renderMap(selectedYear, projection);
+    // Run when the app renders
+    updateLoadCountryCoordinates();
+    updateVotingTypeOptions(selectedYear);
+    updateLoadTopFiveYear(selectedYear).then(() => {
+      updateInfoDisplay(selectedYear, null, null)
+    });
 
-    const yearSelect = document.getElementById("year-select");
-    const infoDisplayTitle = document.querySelector("#info-display h3");
+    // need year data before render map
+    updatedataBasedOnYear(selectedYear).then(() => {;
+      renderMap(selectedYear, projection)});
 
-    if (yearSelect) {
-      yearSelect.value = selectedYear;
-      infoDisplayTitle.textContent = selectedYear;
-      updateInfoDisplay(selectedYear, null, null);
-      yearSelect.addEventListener("change", (event) => {
-        selectedYear = parseInt(event.target.value);
-        infoDisplayTitle.textContent = selectedYear;
-        renderMap(selectedYear, projection);
-      });
-    }
   }
 });
+// Load UI components and add event listners to them
+document.addEventListener("DOMContentLoaded", () => {
+  const infoDisplayTitle = document.querySelector("#info-display h3");
 
-async function handleSelectedCountry(countryName, projection) {
-  if (selectedCountry === countryName) {
+  const yearSelect = document.getElementById("year-select");
+  const votingTypeSelect = document.getElementById("votingType-select");
+
+  selectedYear = yearSelect.value;
+
+  infoDisplayTitle.textContent = selectedYear;
+
+  yearSelect.addEventListener("change", (event) => {
+    deselectCountry()
+
+    selectedYear = event.target.value;
+    infoDisplayTitle.textContent = selectedYear;
+    updateVotingTypeOptions(selectedYear);
+
+    voteType = "total_points";
+    votingTypeSelect.value = "total_points";
+    updateLoadTopFiveYear(selectedYear).then(() => {
+      updateInfoDisplay(selectedYear, null, null)});
+      // need year data before render map
+    updatedataBasedOnYear(selectedYear).then(() => {;
+      renderMap(selectedYear, projection)});
+  });
+  votingTypeSelect.addEventListener("change", (event) => {
+    voteType = event.target.value;
+    if (selectedCountry != null){
+      handleSelectedCountry(selectedCountry, projection, true)
+    }
+  });
+});
+
+//// Functions
+// Handle when a country is being pressed
+async function handleSelectedCountry(countryName, projection, isChangeVoteType) {
+  if (selectedCountry === countryName && !isChangeVoteType) {
     updateInfoDisplay(selectedYear, null, null);
     deselectCountry();
     return;
   }
+
   selectedCountry = countryName;
   linkGroup.selectAll("line").remove();
 
   // Load capitals data
-  const capitals = await loadCountryCoordinates();
 
   const selectedCapitalCoordinates = await getCaptialCoordinates(
     capitals,
@@ -230,25 +138,17 @@ async function handleSelectedCountry(countryName, projection) {
     projection
   );
 
-  const pointsGivenToCountries =
-    countryPointsByYear[selectedYear]?.[countryName];
-  if (!pointsGivenToCountries) {
+  const countryVotedFor = countryPointsByYear[countryName];
+  if (!countryVotedFor) {
     console.error("No countries found:" + countryName);
     return;
   }
+  const top5 = Object.entries(countryVotedFor)
+    .sort((a, b) => b[1][voteType] - a[1][voteType]);
 
-  // Get votes from from selectedCountry from selectedYear
-  const votes = countryPointsByYear[selectedYear][selectedCountry] || {};
+  updateInfoDisplay(selectedYear ,selectedCountry, top5);
 
-  // Take top 5 most voted countries
-  const top5 = Object.entries(votes)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 5);
-
-  updateInfoDisplay(selectedYear, selectedCountry, top5);
-
-  // Draw arrows to top 5 countries
-  top5.forEach(([toCountry, points]) => {
+  top5.slice(0, 5).forEach(([toCountry, points]) => {
     getCaptialCoordinates(capitals, toCountry, projection).then((coords) => {
       if (!coords || !selectedCapitalCoordinates) return;
       linkGroup
@@ -258,28 +158,71 @@ async function handleSelectedCountry(countryName, projection) {
         .attr("x2", coords[0])
         .attr("y2", coords[1])
         .attr("stroke", "black")
-        .attr("stroke-width", Math.max(1, points / 6))
+        .attr("stroke-width", Math.max(1, points[voteType] / 6))
         .attr("marker-end", "url(#arrow)");
     });
   });
 }
 
+// map Render
+function renderMap(year, projection) {
+  d3.json("data/map.geo.json")
+    .then((geoData) => {
+      const features = geoData.features;
+
+      mapGroup.selectAll("*").remove();
+      linkGroup.selectAll("*").remove();
+
+      selectedCountry = null;
+      mapGroup
+        .selectAll("path")
+        .data(features)
+        .enter()
+        .append("path")
+        .attr("d", path)
+        .attr("stroke", "#fff")
+        .classed("unavailable", d => !countryPointsByYear[d.properties.name_en])
+        .on("click", (event, d) => {
+        
+          if (countryPointsByYear[d.properties.name_en]) {
+            mapGroup.selectAll("path").classed("selected", false);
+            d3.select(event.currentTarget).classed("selected", true);
+            
+            const countryName = d.properties.name_en;
+            handleSelectedCountry(countryName, projection, false);
+          }
+        });
+    })
+    .catch((e) => console.error("Error loading data", e));
+}
+ // Update the info display
 function updateInfoDisplay(year, countryName, pointsGivenToCountries) {
   const infoDisplay = document.getElementById("info-display");
-
   infoDisplay.innerHTML = "";
+  // Eurovison was pause this year
+  if (year == 2020){
+    const title = document.createElement("h3");
+    title.textContent = `No data for year 2020`;
+    infoDisplay.appendChild(title);
+    return;
+  }
+  // If no country is selected show top 5 winners for current years
   if (countryName === null && pointsGivenToCountries == null) {
-    //const topFive = topFiveCountriesByYear[year];
+    updateLoadTopFiveYear(selectedYear)
 
     const title = document.createElement("h3");
     title.textContent = `Top 5 in ${year}:`;
     infoDisplay.appendChild(title);
-    // topFive.forEach(({ country, position, song, artist }) => {
-    //   const p = document.createElement("p");
-    //   p.textContent = `${position}. ${country} - ${song} by ${artist}`;
-    //   p.classList.add("no-hover");
-    //   infoDisplay.appendChild(p);
-    // });
+    // For top 5 data
+    const topFiveWithCountry = Object.entries(yearTopFive).map(([country, data]) => ({ country, ...data }));
+    topFiveWithCountry.sort((a, b) => a.pos - b.pos);
+
+    topFiveWithCountry.forEach(({ pos, country, song, performer }) => {
+      const p = document.createElement("p");
+      p.textContent = `${pos}. ${country} - ${song} by ${performer}`;
+      p.classList.add("no-hover");
+      infoDisplay.appendChild(p);
+    });
     const p = document.createElement("p");
     p.textContent = "Click on a country to see who they voted for";
     p.classList.add("info-footer", "no-hover");
@@ -287,29 +230,32 @@ function updateInfoDisplay(year, countryName, pointsGivenToCountries) {
     return;
   }
 
+  // Show the votes that country voted on
   const title = document.createElement("h3");
-  title.textContent = `${countryName}'s points:`;
+  title.textContent = `${countryName}'s ${voteTypeMap[voteType]}`;
   infoDisplay.appendChild(title);
-
-  const sortedCountries = Object.entries(pointsGivenToCountries).sort(
-    ([, pointsA], [, pointsB]) => pointsB - pointsA
-  );
-
-  sortedCountries.forEach(([country, points], counter) => {
+  pointsGivenToCountries.forEach(([country, points], counter) => {
     const p = document.createElement("p");
-    p.textContent = `${counter + 1}: ${points} points`;
-    p.style.cursor = "pointer";
 
+    p.textContent = `${counter + 1}: ${country} ${points[voteType]} points`;
+    p.style.cursor = "pointer"; 
+
+    // If we click the country we select that country
     p.addEventListener("click", () => {
-      handleSelectedCountry(country, path.projection());
+      handleSelectedCountry(country, path.projection(), false); 
     });
+
     infoDisplay.appendChild(p);
   });
+    const p2 = document.createElement("p");
+    p2.textContent = 'Only showing top 5 arrows'
+    infoDisplay.appendChild(p2);
 }
-
+// If we the user press the same country agian or changes the year
 async function deselectCountry() {
   selectedCountry = null;
   linkGroup.selectAll("line").remove();
+  mapGroup.selectAll("path").classed("selected", false);
 }
 
 async function getCaptialCoordinates(capitals, country, projection) {
@@ -321,45 +267,47 @@ async function getCaptialCoordinates(capitals, country, projection) {
   return projection([coordinates[0], coordinates[1]]);
 }
 
+function updateVotingTypeOptions(selectedYear) {
+  const votingTypeSelect = document.getElementById("votingType-select");
+  votingTypeSelect.innerHTML = "";
+  if (selectedYear > 2015) {
+    votingTypeSelect.innerHTML = `
+      <option value="total_points">All votes</option>
+      <option value="tele_points">Tele votes</option>
+      <option value="jury_points">Jury votes</option>
+    `;
+  } else {
+    votingTypeSelect.innerHTML = `<option value="total_points">All votes</option>`;
+  }
+}
+
+// Update the data 
+async function updatedataBasedOnYear(year) {
+  countryPointsByYear = await loadCountryYearPoints(year);
+}
+async function updateLoadTopFiveYear(year) {
+  yearTopFive = await loadTopFiveYear(year);
+}
+const updateLoadCountryCoordinates = async () =>{
+  capitals = await loadCountryCoordinates();
+} 
+
+// Data fetchers
 const loadCountryCoordinates = async () => {
   const response = await fetch("./data/capitals.geojson");
   const countryCoordinates = await response.json();
   return countryCoordinates;
 };
 
-function renderMap(year, projection) {
-  d3.json("data/map.geo.json")
-    .then((geoData) => {
-      const features = geoData.features;
+const loadCountryYearPoints = async (year) => {
+    const response = await fetch('./data/voting_map_data.json');
+    const data = await response.json();
+    return data[year] || {};
+};
+const loadTopFiveYear = async (year) => {
+    const response = await fetch('./data/top_5_data.json');
+    const data = await response.json();
+    return data[year] || {};
+};
 
-      mapGroup.selectAll("*").remove();
-      // Clear the lines
-      linkGroup.selectAll("*").remove();
 
-      selectedCountry = null;
-
-      mapGroup
-        .selectAll("path")
-        .data(features)
-        .enter()
-        .append("path")
-        .attr("d", path)
-        .attr("stroke", "#fff")
-        .attr("fill", (d) =>
-          countryPointsByYear[year]?.[d.properties.name_en]
-            ? "lightgray"
-            : "#ccc"
-        )
-        .classed(
-          "unavailable",
-          (d) => !countryPointsByYear[year]?.[d.properties.name_en]
-        )
-        .on("click", (event, d) => {
-          if (countryPointsByYear[year]?.[d.properties.name_en]) {
-            const countryName = d.properties.name_en;
-            handleSelectedCountry(countryName, projection);
-          }
-        });
-    })
-    .catch((e) => console.error("Error loading data", e));
-}
