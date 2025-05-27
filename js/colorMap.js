@@ -36,7 +36,7 @@ window.addEventListener("DOMContentLoaded", () => {
     svg.attr("width", containerWidth).attr("height", containerHeight);
 
     const projection = d3.geoMercator()
-      .scale(containerWidth / 5)
+      .scale(containerWidth / 4)
       .translate([containerWidth / 5, containerHeight / 1.7]);
 
     path = d3.geoPath().projection(projection);
@@ -60,14 +60,14 @@ async function handleSelectedCountry(countryName, countryTotalPoints, allFeature
   const tooltip = document.getElementById("country-tooltip");
   tooltip.innerHTML = `<strong>${countryName}</strong><br>Points: ${countryTotalPoints}`;
   tooltip.style.display = "block";
-  tooltip.style.left = (event.clientX -10) + "px";
-  tooltip.style.top = (event.clientY - 10) + "px";
+  tooltip.style.left = (event.clientX -10) +"px";
+  tooltip.style.top = (event.clientY - 10) +"px";
 }
 
 function updateInfoDisplay(year, countryName, pointsGivenToCountries) {
   const infoDisplay = document.getElementById("info-display");
   if (!infoDisplay) {
-    console.error("Info display element not found.");
+    console.error("Info display element not found");
     return;
   }
 }
@@ -154,9 +154,8 @@ function updateVotingTypeOptions(selectedYear) {
       <option value="0">All votes</option>
       <option value="1">Tele votes</option>
       <option value="2">Jury votes</option>
-    `;
+    `
   } else {
-
     votingTypeSelect.innerHTML = `<option value="0">All votes</option>`;
   }
 }
