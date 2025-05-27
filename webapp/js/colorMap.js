@@ -4,6 +4,8 @@ let svg, path, linkGroup, mapGroup;
 let selectedCountry = null;
 let countriesNormalizedPoints = {};
 
+//// Event listners
+// load when app starts
 window.addEventListener("DOMContentLoaded", () => {
   const container = d3.select("#color-map-container");
   if (!container.empty()) {
@@ -23,7 +25,6 @@ window.addEventListener("DOMContentLoaded", () => {
         .attr("stroke", "#999")
         .attr("stroke-width", 1);
     }
-
     const containerWidth = container.node().getBoundingClientRect().width;
     const containerHeight = containerWidth * 0.75;
 
@@ -46,9 +47,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
     svg.call(zoom);
     updateCountriesNormalizedPoints(selectedYear);
+    updateVotingTypeOptions(selectedYear);
   }
 });
-
+// load containers, and add event listners to them
 document.addEventListener("DOMContentLoaded", () => {
   const infoDisplayTitle = document.querySelector("#info-display h3");
 
@@ -61,11 +63,11 @@ document.addEventListener("DOMContentLoaded", () => {
   yearSelect.addEventListener("change", (event) => {
     selectedYear = +event.target.value;
     infoDisplayTitle.textContent = selectedYear;
-    console.log(selectedYear);
     updateVotingTypeOptions(selectedYear);
     voteType = 0;
     votingTypeSelect.value = 0;
     updateCountriesNormalizedPoints(selectedYear);
+    updateInfoDisplay(selectedYear)
   });
 
   votingTypeSelect.addEventListener("change", (event) => {
@@ -83,7 +85,6 @@ document.addEventListener("click", (e) => {
 async function handleSelectedCountry(
   countryName,
   countryTotalPoints,
-  allFeatures,
   event
 ) {
   const tooltip = document.getElementById("country-tooltip");
@@ -138,7 +139,6 @@ function renderMap(year) {
             handleSelectedCountry(
               countryName,
               countryTotalPoints,
-              features,
               event
             );
           }
@@ -147,23 +147,30 @@ function renderMap(year) {
     .catch((error) => console.error("Error loading GeoJSON data:", error));
 }
 
+
+function updateInfoDisplay(year) {
+  const infoDisplay = document.getElementById("info-display");
+  if (year == 2020){
+  const title = document.createElement("h3");
+    title.textContent = `No data for year 2020`;
+    title.id = "2020";
+    infoDisplay.appendChild(title);
+    return; 
+  }
+  const have2020 = document.getElementById("2020");
+  if (have2020) have2020.remove();
+}
+
 const loadCountryYearPoints = async (year) => {
   const response = await fetch("./data/colorMap.json");
   const data = await response.json();
   return data[year] || {};
 };
 
+// load the data and render the map, this is decoupled in voting map
 async function updateCountriesNormalizedPoints(year) {
   countriesNormalizedPoints = await loadCountryYearPoints(year);
   renderMap(year);
-}
-
-function updateInfoDisplay(year, countryName, pointsGivenToCountries) {
-  const infoDisplay = document.getElementById("info-display");
-  if (!infoDisplay) {
-    console.error("Info display element not found");
-    return;
-  }
 }
 
 function updateVotingTypeOptions(selectedYear) {
@@ -179,4 +186,3 @@ function updateVotingTypeOptions(selectedYear) {
     votingTypeSelect.innerHTML = `<option value="0">All votes</option>`;
   }
 }
-updateVotingTypeOptions(selectedYear);

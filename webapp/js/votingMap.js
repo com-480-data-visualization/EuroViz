@@ -3,12 +3,17 @@ let voteType = "total_points";
 let svg, path, linkGroup, mapGroup;
 let selectedCountry = null;
 let countryPointsByYear = {}
+let yearTopFive = {}
 let projection;
+let capitals;
+
+
 const voteTypeMap = { "total_points" : "Total votes",
                       "tele_points"   : "Telephone votes",
                       "jury_points"   : "Jury votes"
 }
-
+ //// Event Listners
+// Load d3 when app starts
 window.addEventListener("DOMContentLoaded", () => {
   const container = d3.select("#voting-map-container");
   if (!container.empty()) {
@@ -48,7 +53,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     projection = d3.geoMercator()
       .scale(containerWidth / 4)
-      .translate([containerWidth / 5, containerHeight / 1.7]);
+      .translate([containerWidth / 5, containerHeight / 1.5]);
 
     path = d3.geoPath().projection(projection);
 
@@ -65,11 +70,21 @@ window.addEventListener("DOMContentLoaded", () => {
       });
 
     svg.call(zoom);
-    updatedataBasedOnYear(selectedYear);
-    renderMap(selectedYear, projection);
+
+    // Run when the app renders
+    updateLoadCountryCoordinates();
+    updateVotingTypeOptions(selectedYear);
+    updateLoadTopFiveYear(selectedYear).then(() => {
+      updateInfoDisplay(selectedYear, null, null)
+    });
+
+    // need year data before render map
+    updatedataBasedOnYear(selectedYear).then(() => {;
+      renderMap(selectedYear, projection)});
+
   }
 });
-
+// Load UI components and add event listners to them
 document.addEventListener("DOMContentLoaded", () => {
   const infoDisplayTitle = document.querySelector("#info-display h3");
 
@@ -79,9 +94,8 @@ document.addEventListener("DOMContentLoaded", () => {
   selectedYear = yearSelect.value;
 
   infoDisplayTitle.textContent = selectedYear;
-  yearSelect.addEventListener("change", (event) => {
 
-    updateInfoDisplay(selectedYear, null, null);
+  yearSelect.addEventListener("change", (event) => {
     deselectCountry()
 
     selectedYear = event.target.value;
@@ -90,43 +104,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
     voteType = "total_points";
     votingTypeSelect.value = "total_points";
-    updatedataBasedOnYear(selectedYear);
-    renderMap(selectedYear, projection);
+    updateLoadTopFiveYear(selectedYear).then(() => {
+      updateInfoDisplay(selectedYear, null, null)});
+      // need year data before render map
+    updatedataBasedOnYear(selectedYear).then(() => {;
+      renderMap(selectedYear, projection)});
   });
-
-    votingTypeSelect.addEventListener("change", (event) => {
-  
+  votingTypeSelect.addEventListener("change", (event) => {
     voteType = event.target.value;
     if (selectedCountry != null){
       handleSelectedCountry(selectedCountry, projection, true)
     }
-    
-    });
-
+  });
 });
 
-const loadCountryYearPoints = async (year) => {
-    const response = await fetch('./data/voting_map_data.json');
-    const data = await response.json();
-    return data[year] || {};
-};
-
-async function updatedataBasedOnYear(year) {
-  countryPointsByYear = await loadCountryYearPoints(year);
-}
-
+//// Functions
+// Handle when a country is being pressed
 async function handleSelectedCountry(countryName, projection, isChangeVoteType) {
-
   if (selectedCountry === countryName && !isChangeVoteType) {
     updateInfoDisplay(selectedYear, null, null);
     deselectCountry();
     return;
   }
+
   selectedCountry = countryName;
   linkGroup.selectAll("line").remove();
 
   // Load capitals data
-  const capitals = await loadCountryCoordinates();
 
   const selectedCapitalCoordinates = await getCaptialCoordinates(
     capitals,
@@ -160,70 +164,7 @@ async function handleSelectedCountry(countryName, projection, isChangeVoteType) 
   });
 }
 
-function updateInfoDisplay(year, countryName, pointsGivenToCountries) {
-  const infoDisplay = document.getElementById("info-display");
-
-  infoDisplay.innerHTML = "";
-  if (countryName === null && pointsGivenToCountries == null) {
-    //const topFive = topFiveCountriesByYear[year];
-
-    const title = document.createElement("h3");
-    title.textContent = `Top 5 in ${year}:`;
-    infoDisplay.appendChild(title);
-    // For top 5 data
-    // topFive.forEach(({ country, position, song, artist }) => {
-    //   const p = document.createElement("p");
-    //   p.textContent = `${position}. ${country} - ${song} by ${artist}`;
-    //   p.classList.add("no-hover");
-    //   infoDisplay.appendChild(p);
-    // });
-    const p = document.createElement("p");
-    p.textContent = "Click on a country to see who they voted for";
-    p.classList.add("info-footer", "no-hover");
-    infoDisplay.appendChild(p);
-    return;
-  }
-
-  const title = document.createElement("h3");
-  title.textContent = `${countryName}'s ${voteTypeMap[voteType]}`;
-  infoDisplay.appendChild(title);
-
-  
-  pointsGivenToCountries.forEach(([country, points], counter) => {
-    const p = document.createElement("p");
-
-    p.textContent = `${counter + 1}: ${country} ${points[voteType]} points`;
-    p.style.cursor = "pointer"; 
-
-    p.addEventListener("click", () => {
-      handleSelectedCountry(country, path.projection(), false); 
-    });
-    infoDisplay.appendChild(p);
-  });
-}
-
-
-async function deselectCountry() {
-  selectedCountry = null;
-  linkGroup.selectAll("line").remove();
-  mapGroup.selectAll("path").classed("selected", false);
-}
-
-async function getCaptialCoordinates(capitals, country, projection) {
-  const result = capitals.features.find(
-    (obj) => obj.properties.country === country
-  );
-  const coordinates = result.geometry.coordinates;
-  if (!coordinates) return null;
-  return projection([coordinates[0], coordinates[1]]);
-}
-
-const loadCountryCoordinates = async () => {
-  const response = await fetch("./data/capitals.geojson");
-  const countryCoordinates = await response.json();
-  return countryCoordinates;
-};
-
+// map Render
 function renderMap(year, projection) {
   d3.json("data/map.geo.json")
     .then((geoData) => {
@@ -233,7 +174,6 @@ function renderMap(year, projection) {
       linkGroup.selectAll("*").remove();
 
       selectedCountry = null;
-
       mapGroup
         .selectAll("path")
         .data(features)
@@ -255,6 +195,77 @@ function renderMap(year, projection) {
     })
     .catch((e) => console.error("Error loading data", e));
 }
+ // Update the info display
+function updateInfoDisplay(year, countryName, pointsGivenToCountries) {
+  const infoDisplay = document.getElementById("info-display");
+  infoDisplay.innerHTML = "";
+  // Eurovison was pause this year
+  if (year == 2020){
+    const title = document.createElement("h3");
+    title.textContent = `No data for year 2020`;
+    infoDisplay.appendChild(title);
+    return;
+  }
+  // If no country is selected show top 5 winners for current years
+  if (countryName === null && pointsGivenToCountries == null) {
+    updateLoadTopFiveYear(selectedYear)
+
+    const title = document.createElement("h3");
+    title.textContent = `Top 5 in ${year}:`;
+    infoDisplay.appendChild(title);
+    // For top 5 data
+    const topFiveWithCountry = Object.entries(yearTopFive).map(([country, data]) => ({ country, ...data }));
+    topFiveWithCountry.sort((a, b) => a.pos - b.pos);
+
+    topFiveWithCountry.forEach(({ pos, country, song, performer }) => {
+      const p = document.createElement("p");
+      p.textContent = `${pos}. ${country} - ${song} by ${performer}`;
+      p.classList.add("no-hover");
+      infoDisplay.appendChild(p);
+    });
+    const p = document.createElement("p");
+    p.textContent = "Click on a country to see who they voted for";
+    p.classList.add("info-footer", "no-hover");
+    infoDisplay.appendChild(p);
+    return;
+  }
+
+  // Show the votes that country voted on
+  const title = document.createElement("h3");
+  title.textContent = `${countryName}'s ${voteTypeMap[voteType]}`;
+  infoDisplay.appendChild(title);
+  pointsGivenToCountries.forEach(([country, points], counter) => {
+    const p = document.createElement("p");
+
+    p.textContent = `${counter + 1}: ${country} ${points[voteType]} points`;
+    p.style.cursor = "pointer"; 
+
+    // If we click the country we select that country
+    p.addEventListener("click", () => {
+      handleSelectedCountry(country, path.projection(), false); 
+    });
+
+    infoDisplay.appendChild(p);
+  });
+    const p2 = document.createElement("p");
+    p2.textContent = 'Only showing top 5 arrows'
+    infoDisplay.appendChild(p2);
+}
+// If we the user press the same country agian or changes the year
+async function deselectCountry() {
+  selectedCountry = null;
+  linkGroup.selectAll("line").remove();
+  mapGroup.selectAll("path").classed("selected", false);
+}
+
+async function getCaptialCoordinates(capitals, country, projection) {
+  const result = capitals.features.find(
+    (obj) => obj.properties.country === country
+  );
+  const coordinates = result.geometry.coordinates;
+  if (!coordinates) return null;
+  return projection([coordinates[0], coordinates[1]]);
+}
 
 function updateVotingTypeOptions(selectedYear) {
   const votingTypeSelect = document.getElementById("votingType-select");
@@ -269,4 +280,34 @@ function updateVotingTypeOptions(selectedYear) {
     votingTypeSelect.innerHTML = `<option value="total_points">All votes</option>`;
   }
 }
-updateVotingTypeOptions(selectedYear);
+
+// Update the data 
+async function updatedataBasedOnYear(year) {
+  countryPointsByYear = await loadCountryYearPoints(year);
+}
+async function updateLoadTopFiveYear(year) {
+  yearTopFive = await loadTopFiveYear(year);
+}
+const updateLoadCountryCoordinates = async () =>{
+  capitals = await loadCountryCoordinates();
+} 
+
+// Data fetchers
+const loadCountryCoordinates = async () => {
+  const response = await fetch("./data/capitals.geojson");
+  const countryCoordinates = await response.json();
+  return countryCoordinates;
+};
+
+const loadCountryYearPoints = async (year) => {
+    const response = await fetch('./data/voting_map_data.json');
+    const data = await response.json();
+    return data[year] || {};
+};
+const loadTopFiveYear = async (year) => {
+    const response = await fetch('./data/top_5_data.json');
+    const data = await response.json();
+    return data[year] || {};
+};
+
+
