@@ -22,9 +22,13 @@
   }
   
   #geo-map path:hover {
-    fill: orange; 
+    fill: lightcoral; 
+
   }
-  
+
+    #geo-map path.selected {
+    fill: rosybrown; 
+  }
 
   #geo-map path.unavailable {
     pointer-events: none;
