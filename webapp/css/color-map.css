@@ -15,14 +15,13 @@
   
 
   #geo-cmap path {
-    fill: white;
     stroke: rgb(15,15,15);
     stroke-width: 0.2;
     cursor: pointer;
   }
   
   #geo-cmap path:hover {
-    fill: orange; 
+   
   }
   
 
@@ -33,12 +32,22 @@
     opacity: 0.6;
   }
 
-  #geo-cmap path.selected {
-    fill: blue; 
-  }
-  
 
-  #geo-cmap path.related {
-    fill: green; 
-  }
+#color-legend {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0 10px 0;
+  font-size: 0.9em;
+  justify-content: center;
+}
+
+#color-legend .legend-gradient {
+  width: 100px;
+  height: 16px;
+  border-radius: 8px;
+  background: linear-gradient(to right, powderblue, midnightblue);
+  border: 1px solid #aaa;
+  margin: 0 8px;
+}
 

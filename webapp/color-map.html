@@ -17,14 +17,26 @@
     <div id="color-map-container">
       <div id="info-display">  
         <h3></h3>  
+        <div id="color-legend">
+          <span>Low votes</span>
+          <div class="legend-gradient"></div>
+          <span>More votes</span>
+        </div>
       </div>
         
       <div id="year-panel">
         <h4>Year</h4>
-        <select id="year-select"></select>
+          <select id="year-select"></select>
+        <h4>Voting type</h4>
+         <select id="votingType-select">
+          <option value="0">All votes</option>
+          <option value="1">Tele votes</option>
+          <option value="2">Jury votes</option>
+        </select>
       </div>
 
       <svg id="geo-cmap" preserveAspectRatio="xMidYMid meet" viewBox="0 0 800 600"></svg>
+      <div id="country-tooltip" style="display:none; position:absolute; pointer-events:none; z-index:1000; background:white; border:1px solid #333; border-radius:6px; padding:8px; font-size:0.95em; box-shadow:0 2px 8px rgba(0,0,0,0.15);"></div>
     </div>
   </main>
 
