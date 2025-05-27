@@ -58,7 +58,7 @@ async function updateCountriesNormalizedPoints(year) {
 }
 async function handleSelectedCountry(countryName, countryTotalPoints, allFeatures, event) {
   const tooltip = document.getElementById("country-tooltip");
-  tooltip.innerHTML = `<strong>${countryName}</strong><br>votes: ${countryTotalPoints}`;
+  tooltip.innerHTML = `<strong>${countryName}</strong><br>Points: ${countryTotalPoints}`;
   tooltip.style.display = "block";
   tooltip.style.left = (event.clientX -10) + "px";
   tooltip.style.top = (event.clientY - 10) + "px";
@@ -85,8 +85,9 @@ document.addEventListener("DOMContentLoaded", () => {
     selectedYear = +event.target.value;
     infoDisplayTitle.textContent = selectedYear;
     console.log(selectedYear)
+    updateVotingTypeOptions(selectedYear);
     voteType = 0
-    votingTypeSelect.value = "0";
+    votingTypeSelect.value = 0;
     updateCountriesNormalizedPoints(selectedYear);
   });
 
@@ -96,9 +97,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 });
-
-
-
 function renderMap(year) {
   d3.json("data/map.geo.json")
     .then(geoData => {
@@ -134,8 +132,8 @@ function renderMap(year) {
                       
                       const countryName = d.properties.name_en
                       const countryData = countriesNormalizedPoints[d.properties.name_en];
-                      
-                      const countryTotalPoints = countryData ? countryData.points[voteType] : undefined;
+
+                      const countryTotalPoints = countryData ? countryData.votes[voteType] : undefined;
                       handleSelectedCountry(countryName, countryTotalPoints,  features, event);
                     }
                   });
@@ -147,3 +145,19 @@ document.addEventListener("click", (e) => {
     document.getElementById("country-tooltip").style.display = "none";
   }
 });
+
+function updateVotingTypeOptions(selectedYear) {
+  const votingTypeSelect = document.getElementById("votingType-select");
+  votingTypeSelect.innerHTML = "";
+  if (selectedYear > 2015) {
+    votingTypeSelect.innerHTML = `
+      <option value="0">All votes</option>
+      <option value="1">Tele votes</option>
+      <option value="2">Jury votes</option>
+    `;
+  } else {
+
+    votingTypeSelect.innerHTML = `<option value="0">All votes</option>`;
+  }
+}
+updateVotingTypeOptions(selectedYear);
