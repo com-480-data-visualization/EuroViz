@@ -1,0 +1,1784 @@
+{
+    "1957": {
+        "Denmark": {
+            "pos": 3,
+            "song": "Skibet Skal Sejle I Nat",
+            "performer": "Birthe Wilke & Gustav Winckler"
+        },
+        "France": {
+            "pos": 2,
+            "song": "La Belle Amour",
+            "performer": "Paule Desjardins"
+        },
+        "Germany": {
+            "pos": 5,
+            "song": "Telefon, Telefon",
+            "performer": "Margot Hielscher"
+        },
+        "Luxembourg": {
+            "pos": 4,
+            "song": "Amours Mortes (Tant De Peine)",
+            "performer": "Dani\u00e8le Dupr\u00e9"
+        },
+        "Netherlands": {
+            "pos": 1,
+            "song": "Net Als Toen",
+            "performer": "Corry Brokken"
+        }
+    },
+    "1958": {
+        "Austria": {
+            "pos": 5,
+            "song": "Die Ganze Welt Braucht Liebe",
+            "performer": "Liane Augustin"
+        },
+        "France": {
+            "pos": 1,
+            "song": "Dors Mon Amour",
+            "performer": "Andr\u00e9 Claveau"
+        },
+        "Italy": {
+            "pos": 3,
+            "song": "Nel Blu Dipinto Di Blu",
+            "performer": "Domenico Modugno"
+        },
+        "Sweden": {
+            "pos": 4,
+            "song": "Lilla Stj\u00e4rna",
+            "performer": "Alice Babs"
+        },
+        "Switzerland": {
+            "pos": 2,
+            "song": "Giorgio",
+            "performer": "Lys Assia"
+        }
+    },
+    "1959": {
+        "Denmark": {
+            "pos": 5,
+            "song": "Uh, Jeg Ville \u00d8nske Jeg Var Dig",
+            "performer": "Birthe Wilke"
+        },
+        "France": {
+            "pos": 3,
+            "song": "Oui, Oui, Oui, Oui",
+            "performer": "Jean Philippe"
+        },
+        "Netherlands": {
+            "pos": 1,
+            "song": "Een Beetje",
+            "performer": "Teddy Scholten"
+        },
+        "Switzerland": {
+            "pos": 4,
+            "song": "Irgendwoher",
+            "performer": "Christa Williams"
+        },
+        "United Kingdom": {
+            "pos": 2,
+            "song": "Sing Little Birdie",
+            "performer": "Pearl Carr & Teddy Johnson"
+        }
+    },
+    "1960": {
+        "France": {
+            "pos": 1,
+            "song": "Tom Pillibi",
+            "performer": "Jacqueline Boyer"
+        },
+        "Germany": {
+            "pos": 4,
+            "song": "Bonne Nuit, Ma Ch\u00e9rie!",
+            "performer": "Wyn Hoop"
+        },
+        "Monaco": {
+            "pos": 3,
+            "song": "Ce Soir-l\u00e0",
+            "performer": "Fran\u00e7ois Deguelt"
+        },
+        "Norway": {
+            "pos": 5,
+            "song": "Voi-voi",
+            "performer": "Nora Brockstedt"
+        },
+        "United Kingdom": {
+            "pos": 2,
+            "song": "Looking High, High, High",
+            "performer": "Bryan Johnson"
+        }
+    },
+    "1961": {
+        "Denmark": {
+            "pos": 5,
+            "song": "Angelique",
+            "performer": "Dario Campeotto"
+        },
+        "France": {
+            "pos": 4,
+            "song": "Printemps (avril Carillonne)",
+            "performer": "Jean-Paul Mauric"
+        },
+        "Luxembourg": {
+            "pos": 1,
+            "song": "Nous Les Amoureux",
+            "performer": "Jean-Claude Pascal"
+        },
+        "Switzerland": {
+            "pos": 3,
+            "song": "Nous Aurons Demain",
+            "performer": "Franca di Rienzo"
+        },
+        "United Kingdom": {
+            "pos": 2,
+            "song": "Are You Sure?",
+            "performer": "The Allisons"
+        }
+    },
+    "1962": {
+        "France": {
+            "pos": 1,
+            "song": "Un Premier Amour",
+            "performer": "Isabelle Aubret"
+        },
+        "Luxembourg": {
+            "pos": 3,
+            "song": "Petit Bonhomme",
+            "performer": "Camillo Felgen"
+        },
+        "Monaco": {
+            "pos": 2,
+            "song": "Dis Rien",
+            "performer": "Fran\u00e7ois Deguelt"
+        },
+        "United Kingdom": {
+            "pos": 4,
+            "song": "Ring-a-ding Girl",
+            "performer": "Ronnie Carroll"
+        },
+        "Yugoslavia": {
+            "pos": 5,
+            "song": "Ne Pali Svetlo U Sumrak",
+            "performer": "Lola Novakovi\u0107"
+        }
+    },
+    "1963": {
+        "Denmark": {
+            "pos": 1,
+            "song": "Dansevise",
+            "performer": "Grethe & J\u00f8rgen Ingmann"
+        },
+        "Italy": {
+            "pos": 3,
+            "song": "Uno Per Tutte",
+            "performer": "Emilio Pericoli"
+        },
+        "Monaco": {
+            "pos": 5,
+            "song": "L'amour S'en Va",
+            "performer": "Fran\u00e7oise Hardy"
+        },
+        "Switzerland": {
+            "pos": 2,
+            "song": "T'en Va Pas",
+            "performer": "Esther Ofarim"
+        },
+        "United Kingdom": {
+            "pos": 4,
+            "song": "Say Wonderful Things",
+            "performer": "Ronnie Carroll"
+        }
+    },
+    "1964": {
+        "France": {
+            "pos": 4,
+            "song": "Le Chant De Mallory",
+            "performer": "Rachel"
+        },
+        "Italy": {
+            "pos": 1,
+            "song": "Non Ho L'\u00e9t\u00e0",
+            "performer": "Gigliola Cinquetti"
+        },
+        "Luxembourg": {
+            "pos": 5,
+            "song": "D\u00e8s Que Le Printemps Revient",
+            "performer": "Hugues Aufray"
+        },
+        "Monaco": {
+            "pos": 3,
+            "song": "O\u00f9 Sont-elles Pass\u00e9es?",
+            "performer": "Romuald"
+        },
+        "United Kingdom": {
+            "pos": 2,
+            "song": "I Love The Little Things",
+            "performer": "Matt Monro"
+        }
+    },
+    "1965": {
+        "Austria": {
+            "pos": 4,
+            "song": "Sag Ihr, Ich Lass' Sie Gr\u00fc\u00dfen",
+            "performer": "Udo J\u00fcrgens"
+        },
+        "France": {
+            "pos": 3,
+            "song": "N'avoue Jamais",
+            "performer": "Guy Mardel"
+        },
+        "Italy": {
+            "pos": 5,
+            "song": "Se Piangi, Se Ridi",
+            "performer": "Bobby Solo"
+        },
+        "Luxembourg": {
+            "pos": 1,
+            "song": "Poup\u00e9e De Cire, Poup\u00e9e De Son",
+            "performer": "France Gall"
+        },
+        "United Kingdom": {
+            "pos": 2,
+            "song": "I Belong",
+            "performer": "Kathy Kirby"
+        }
+    },
+    "1966": {
+        "Austria": {
+            "pos": 1,
+            "song": "Merci Ch\u00e9rie",
+            "performer": "Udo J\u00fcrgens"
+        },
+        "Belgium": {
+            "pos": 4,
+            "song": "Un Peu De Poivre, Un Peu De Sel",
+            "performer": "Tonia"
+        },
+        "Ireland": {
+            "pos": 5,
+            "song": "Come Back To Stay",
+            "performer": "Dickie Rock"
+        },
+        "Norway": {
+            "pos": 3,
+            "song": "Intet Er Nytt Under Solen",
+            "performer": "\u00c5se Kleveland"
+        },
+        "Sweden": {
+            "pos": 2,
+            "song": "Nygammal Vals",
+            "performer": "Lill Lindfors & Svante Thuresson"
+        }
+    },
+    "1967": {
+        "France": {
+            "pos": 3,
+            "song": "Il Doit Faire Beau L\u00e0-bas",
+            "performer": "No\u00eblle Cordier"
+        },
+        "Ireland": {
+            "pos": 2,
+            "song": "If I Could Choose",
+            "performer": "Sean Dunphy"
+        },
+        "Luxembourg": {
+            "pos": 4,
+            "song": "L'amour Est Bleu",
+            "performer": "Vicky"
+        },
+        "Monaco": {
+            "pos": 5,
+            "song": "Boum-badaboum",
+            "performer": "Minouche Barelli"
+        },
+        "United Kingdom": {
+            "pos": 1,
+            "song": "Puppet On A String",
+            "performer": "Sandie Shaw"
+        }
+    },
+    "1968": {
+        "France": {
+            "pos": 3,
+            "song": "La Source",
+            "performer": "Isabelle Aubret"
+        },
+        "Ireland": {
+            "pos": 4,
+            "song": "Chance Of A Lifetime",
+            "performer": "Pat McGeegan"
+        },
+        "Spain": {
+            "pos": 1,
+            "song": "La, La, La...",
+            "performer": "Massiel"
+        },
+        "Sweden": {
+            "pos": 5,
+            "song": "Det B\u00f6rjar Verka K\u00e4rlek, Banne Mej",
+            "performer": "Claes-G\u00f6ran Hederstr\u00f6m"
+        },
+        "United Kingdom": {
+            "pos": 2,
+            "song": "Congratulations",
+            "performer": "Cliff Richard"
+        }
+    },
+    "1969": {
+        "France": {
+            "pos": 1,
+            "song": "Un Jour, Un Enfant",
+            "performer": "Frida Boccara"
+        },
+        "Netherlands": {
+            "pos": 2,
+            "song": "De Troubadour",
+            "performer": "Lenny Kuhr"
+        },
+        "Spain": {
+            "pos": 3,
+            "song": "Vivo Cantando",
+            "performer": "Salom\u00e9"
+        },
+        "Switzerland": {
+            "pos": 5,
+            "song": "Bonjour, Bonjour",
+            "performer": "Paola del Medico"
+        },
+        "United Kingdom": {
+            "pos": 4,
+            "song": "Boom Bang-a-bang",
+            "performer": "Lulu"
+        }
+    },
+    "1970": {
+        "France": {
+            "pos": 4,
+            "song": "Marie Blanche",
+            "performer": "Guy Bonnet"
+        },
+        "Germany": {
+            "pos": 3,
+            "song": "Wunder Gibt Es Immer Wieder",
+            "performer": "Katja Ebstein"
+        },
+        "Ireland": {
+            "pos": 1,
+            "song": "All Kinds Of Everything",
+            "performer": "Dana"
+        },
+        "Spain": {
+            "pos": 5,
+            "song": "Gwendolyne",
+            "performer": "Julio Iglesias"
+        },
+        "United Kingdom": {
+            "pos": 2,
+            "song": "Knock, Knock (who's there?)",
+            "performer": "Mary Hopkin"
+        }
+    },
+    "1971": {
+        "Germany": {
+            "pos": 3,
+            "song": "Diese Welt",
+            "performer": "Katja Ebstein"
+        },
+        "Italy": {
+            "pos": 5,
+            "song": "L'amore \u00e8 Un Attimo",
+            "performer": "Massimo Ranieri"
+        },
+        "Monaco": {
+            "pos": 1,
+            "song": "Un Banc, Un Arbre, Une Rue",
+            "performer": "S\u00e9verine"
+        },
+        "Spain": {
+            "pos": 2,
+            "song": "En Un Mundo Nuevo",
+            "performer": "Karina"
+        },
+        "United Kingdom": {
+            "pos": 4,
+            "song": "Jack In The Box",
+            "performer": "Clodagh Rodgers"
+        }
+    },
+    "1972": {
+        "Austria": {
+            "pos": 5,
+            "song": "Falter Im Wind",
+            "performer": "The Milestones"
+        },
+        "Germany": {
+            "pos": 3,
+            "song": "Nur Die Liebe L\u00e4\u00dft Uns Leben",
+            "performer": "Mary Roos"
+        },
+        "Luxembourg": {
+            "pos": 1,
+            "song": "Apr\u00e8s Toi",
+            "performer": "Vicky Leandros"
+        },
+        "Netherlands": {
+            "pos": 4,
+            "song": "Als Het Om De Liefde Gaat",
+            "performer": "Sandra and Andres"
+        },
+        "United Kingdom": {
+            "pos": 2,
+            "song": "Beg, Steal Or Borrow",
+            "performer": "The New Seekers"
+        }
+    },
+    "1973": {
+        "Israel": {
+            "pos": 4,
+            "song": "Ey-sham",
+            "performer": "Ilanit"
+        },
+        "Luxembourg": {
+            "pos": 1,
+            "song": "Tu Te Reconna\u00eetras",
+            "performer": "Anne-Marie David"
+        },
+        "Spain": {
+            "pos": 2,
+            "song": "Eres T\u00fa",
+            "performer": "Mocedades"
+        },
+        "Sweden": {
+            "pos": 5,
+            "song": "You're Summer",
+            "performer": "The Nova and The Dolls"
+        },
+        "United Kingdom": {
+            "pos": 3,
+            "song": "Power To All Our Friends",
+            "performer": "Cliff Richard"
+        }
+    },
+    "1974": {
+        "Italy": {
+            "pos": 2,
+            "song": "Si",
+            "performer": "Gigliola Cinquetti"
+        },
+        "Luxembourg": {
+            "pos": 4,
+            "song": "Bye, Bye, I Love You",
+            "performer": "Ireen Sheer"
+        },
+        "Monaco": {
+            "pos": 5,
+            "song": "Celui Qui Reste Et Celui Qui S'en Va",
+            "performer": "Romuald"
+        },
+        "Netherlands": {
+            "pos": 3,
+            "song": "I See A Star",
+            "performer": "Mouth and MacNeal"
+        },
+        "Sweden": {
+            "pos": 1,
+            "song": "Waterloo",
+            "performer": "ABBA"
+        }
+    },
+    "1975": {
+        "France": {
+            "pos": 4,
+            "song": "Et Bonjour \u00e0 Toi L'artiste",
+            "performer": "Nicole Rieu"
+        },
+        "Italy": {
+            "pos": 3,
+            "song": "Era",
+            "performer": "Wess & Dori Ghezzi"
+        },
+        "Luxembourg": {
+            "pos": 5,
+            "song": "Toi",
+            "performer": "G\u00e9raldine"
+        },
+        "Netherlands": {
+            "pos": 1,
+            "song": "Ding-A-Dong",
+            "performer": "Teach-In"
+        },
+        "United Kingdom": {
+            "pos": 2,
+            "song": "Let Me Be The One",
+            "performer": "The Shadows"
+        }
+    },
+    "1976": {
+        "Austria": {
+            "pos": 5,
+            "song": "My Little World",
+            "performer": "Waterloo and Robinson"
+        },
+        "France": {
+            "pos": 2,
+            "song": "Un, Deux, Trois",
+            "performer": "Catherine Ferry"
+        },
+        "Monaco": {
+            "pos": 3,
+            "song": "Toi, La Musique Et Moi",
+            "performer": "Mary Christy"
+        },
+        "Switzerland": {
+            "pos": 4,
+            "song": "Djambo, Djambo",
+            "performer": "Peter, Sue and Marc"
+        },
+        "United Kingdom": {
+            "pos": 1,
+            "song": "Save Your Kisses For Me",
+            "performer": "Brotherhood of Man"
+        }
+    },
+    "1977": {
+        "France": {
+            "pos": 1,
+            "song": "L'oiseau Et L'enfant",
+            "performer": "Marie Myriam"
+        },
+        "Greece": {
+            "pos": 5,
+            "song": "Mathima Solfez",
+            "performer": "Pascalis, Marianna, Robert and Bessy"
+        },
+        "Ireland": {
+            "pos": 3,
+            "song": "It's Nice To Be In Love Again",
+            "performer": "The Swarbriggs Plus Two"
+        },
+        "Monaco": {
+            "pos": 4,
+            "song": "Une Petite Fran\u00e7aise",
+            "performer": "Mich\u00e8le Torr"
+        },
+        "United Kingdom": {
+            "pos": 2,
+            "song": "Rock Bottom",
+            "performer": "Lynsey de Paul and Mike Moran"
+        }
+    },
+    "1978": {
+        "Belgium": {
+            "pos": 2,
+            "song": "L'amour \u00e7a Fait Chanter La Vie",
+            "performer": "Jean Vall\u00e9e"
+        },
+        "France": {
+            "pos": 3,
+            "song": "Il Y Aura Toujours Des Violons",
+            "performer": "Jo\u00ebl Pr\u00e9vost"
+        },
+        "Ireland": {
+            "pos": 5,
+            "song": "Born To Sing",
+            "performer": "Colm T. Wilkinson"
+        },
+        "Israel": {
+            "pos": 1,
+            "song": "A-Ba-Ni-Bi",
+            "performer": "Izhar Cohen and the Alphabeta"
+        },
+        "Monaco": {
+            "pos": 4,
+            "song": "Les Jardins De Monaco",
+            "performer": "Caline and Olivier Toussaint"
+        }
+    },
+    "1979": {
+        "France": {
+            "pos": 3,
+            "song": "Je Suis L'enfant-soleil",
+            "performer": "Anne-Marie David"
+        },
+        "Germany": {
+            "pos": 4,
+            "song": NaN,
+            "performer": "Dschinghis Khan"
+        },
+        "Ireland": {
+            "pos": 5,
+            "song": "Happy Man",
+            "performer": "Cathal Dunne"
+        },
+        "Israel": {
+            "pos": 1,
+            "song": "Hallelujah",
+            "performer": "Milk and Honey"
+        },
+        "Spain": {
+            "pos": 2,
+            "song": "Su Canci\u00f3n",
+            "performer": "Betty Missiego"
+        }
+    },
+    "1980": {
+        "Germany": {
+            "pos": 2,
+            "song": "Theater",
+            "performer": "Katja Ebstein"
+        },
+        "Ireland": {
+            "pos": 1,
+            "song": "What's Another Year",
+            "performer": "Johnny Logan"
+        },
+        "Netherlands": {
+            "pos": 5,
+            "song": "Amsterdam",
+            "performer": "Maggie MacNeal"
+        },
+        "Switzerland": {
+            "pos": 4,
+            "song": "Cin\u00e9ma",
+            "performer": "Paola"
+        },
+        "United Kingdom": {
+            "pos": 3,
+            "song": "Love Enough For Two",
+            "performer": "Prima Donna"
+        }
+    },
+    "1981": {
+        "France": {
+            "pos": 3,
+            "song": "Humanahum",
+            "performer": "Jean Gabilou"
+        },
+        "Germany": {
+            "pos": 2,
+            "song": "Johnny Blue",
+            "performer": "Lena Valaitis"
+        },
+        "Ireland": {
+            "pos": 5,
+            "song": "Horoscopes",
+            "performer": "Sheeba"
+        },
+        "Switzerland": {
+            "pos": 4,
+            "song": "Io Senza Tei",
+            "performer": "Peter, Sue and Marc"
+        },
+        "United Kingdom": {
+            "pos": 1,
+            "song": "Making Your Mind Up",
+            "performer": "Bucks Fizz"
+        }
+    },
+    "1982": {
+        "Belgium": {
+            "pos": 4,
+            "song": "Si Tu Aimes Ma Musique",
+            "performer": "Stella"
+        },
+        "Cyprus": {
+            "pos": 5,
+            "song": "Mono I Agapi",
+            "performer": "Anna Vissi"
+        },
+        "Germany": {
+            "pos": 1,
+            "song": "Ein Bi\u00dfchen Frieden",
+            "performer": "Nicole"
+        },
+        "Israel": {
+            "pos": 2,
+            "song": "Hora",
+            "performer": "Avi Toledano"
+        },
+        "Switzerland": {
+            "pos": 3,
+            "song": "Amour On T'aime",
+            "performer": "Arlette Zola"
+        }
+    },
+    "1983": {
+        "Germany": {
+            "pos": 5,
+            "song": "R\u00fccksicht",
+            "performer": "Hoffmann und Hoffmann"
+        },
+        "Israel": {
+            "pos": 2,
+            "song": "Hi",
+            "performer": "Ofra Haza"
+        },
+        "Luxembourg": {
+            "pos": 1,
+            "song": "Si La Vie Est Cadeau",
+            "performer": "Corinne Herm\u00e8s"
+        },
+        "Sweden": {
+            "pos": 3,
+            "song": "Fr\u00e4mling",
+            "performer": "Carola H\u00e4ggkvist"
+        },
+        "Yugoslavia": {
+            "pos": 4,
+            "song": "Dzuli",
+            "performer": "Danijel"
+        }
+    },
+    "1984": {
+        "Belgium": {
+            "pos": 5,
+            "song": "Avanti La Vie",
+            "performer": "Jacques Zegers"
+        },
+        "Denmark": {
+            "pos": 4,
+            "song": "Det' Lige Det",
+            "performer": "Hot Eyes"
+        },
+        "Ireland": {
+            "pos": 2,
+            "song": "Terminal '3'",
+            "performer": "Linda Martin"
+        },
+        "Spain": {
+            "pos": 3,
+            "song": "Lady, Lady",
+            "performer": "Bravo"
+        },
+        "Sweden": {
+            "pos": 1,
+            "song": "Diggi-loo Diggy-ley",
+            "performer": "Herrey's"
+        }
+    },
+    "1985": {
+        "Germany": {
+            "pos": 2,
+            "song": "F\u00fcr Alle",
+            "performer": "Wind"
+        },
+        "Israel": {
+            "pos": 5,
+            "song": "Ol\u00e9 Ol\u00e9",
+            "performer": "Izhar Cohen"
+        },
+        "Norway": {
+            "pos": 1,
+            "song": "La Det Swinge",
+            "performer": "Bobbysocks"
+        },
+        "Sweden": {
+            "pos": 3,
+            "song": "Bra Vibrationer",
+            "performer": "Kikki Danielsson"
+        },
+        "United Kingdom": {
+            "pos": 4,
+            "song": "Love Is...",
+            "performer": "Vikki"
+        }
+    },
+    "1986": {
+        "Belgium": {
+            "pos": 1,
+            "song": "J'aime La Vie",
+            "performer": "Sandra Kim"
+        },
+        "Ireland": {
+            "pos": 4,
+            "song": "You Can Count On Me",
+            "performer": "Luv Bug"
+        },
+        "Luxembourg": {
+            "pos": 3,
+            "song": "L'amour De Ma Vie",
+            "performer": "Sherisse Laurence"
+        },
+        "Sweden": {
+            "pos": 5,
+            "song": "E' De' Det H\u00e4r Du Kallar K\u00e4rlek",
+            "performer": "Lasse Holm & Monica T\u00f6rnell"
+        },
+        "Switzerland": {
+            "pos": 2,
+            "song": "Pas Pour Moi",
+            "performer": "Daniela Simons"
+        }
+    },
+    "1987": {
+        "Germany": {
+            "pos": 2,
+            "song": "La\u00df Die Sonne In Dein Herz",
+            "performer": "Wind"
+        },
+        "Ireland": {
+            "pos": 1,
+            "song": "Hold Me Now",
+            "performer": "Johnny Logan"
+        },
+        "Italy": {
+            "pos": 3,
+            "song": "Gente Di Mare",
+            "performer": "Umberto Tozzi and Raf"
+        },
+        "Netherlands": {
+            "pos": 5,
+            "song": "Rechtop In De Wind",
+            "performer": "Marcha"
+        },
+        "Yugoslavia": {
+            "pos": 4,
+            "song": "Ja Sam Za Ples",
+            "performer": "Novi Fosili"
+        }
+    },
+    "1988": {
+        "Denmark": {
+            "pos": 3,
+            "song": "Ka' Du Se Hva' Jeg Sa'",
+            "performer": "Kirsten & S\u00f8ren"
+        },
+        "Luxembourg": {
+            "pos": 4,
+            "song": "Croire",
+            "performer": "Lara Fabian"
+        },
+        "Norway": {
+            "pos": 5,
+            "song": "For V\u00e5r Jord",
+            "performer": "Karoline Kr\u00fcger"
+        },
+        "Switzerland": {
+            "pos": 1,
+            "song": "Ne Partez Pas Sans Moi",
+            "performer": "C\u00e9line Dion"
+        },
+        "United Kingdom": {
+            "pos": 2,
+            "song": "Go",
+            "performer": "Scott Fitzgerald"
+        }
+    },
+    "1989": {
+        "Austria": {
+            "pos": 5,
+            "song": "Nur Ein Lied",
+            "performer": "Thomas Forstner"
+        },
+        "Denmark": {
+            "pos": 3,
+            "song": "Vi Maler Byen R\u00f8d",
+            "performer": "Birthe Kj\u00e6r"
+        },
+        "Sweden": {
+            "pos": 4,
+            "song": "En Dag",
+            "performer": "Tommy Nilsson"
+        },
+        "United Kingdom": {
+            "pos": 2,
+            "song": "Why Do I Always Get It Wrong",
+            "performer": "Live Report"
+        },
+        "Yugoslavia": {
+            "pos": 1,
+            "song": "Rock Me",
+            "performer": "Riva"
+        }
+    },
+    "1990": {
+        "France": {
+            "pos": 3,
+            "song": "White And Black Blues",
+            "performer": "Joelle Ursull"
+        },
+        "Iceland": {
+            "pos": 4,
+            "song": "Eitt Lag Enn",
+            "performer": "Stj\u00f3rnin"
+        },
+        "Ireland": {
+            "pos": 2,
+            "song": "Somewhere In Europe",
+            "performer": "Liam Reilly"
+        },
+        "Italy": {
+            "pos": 1,
+            "song": "Insieme: 1992",
+            "performer": "Toto Cutugno"
+        },
+        "Spain": {
+            "pos": 5,
+            "song": "Bandido",
+            "performer": "Az\u00facar Moreno"
+        }
+    },
+    "1991": {
+        "France": {
+            "pos": 2,
+            "song": "C'est Le Dernier Qui A Parl\u00e9 Qui A Raison",
+            "performer": "Amina"
+        },
+        "Israel": {
+            "pos": 3,
+            "song": "Kan",
+            "performer": "Duo Datz"
+        },
+        "Spain": {
+            "pos": 4,
+            "song": "Bailar Pegados",
+            "performer": "Sergio Dalma"
+        },
+        "Sweden": {
+            "pos": 1,
+            "song": "F\u00e5ngad Av En Stormvind",
+            "performer": "Carola"
+        },
+        "Switzerland": {
+            "pos": 5,
+            "song": "Canzone Per Te",
+            "performer": "Sandra Sim\u00f2"
+        }
+    },
+    "1992": {
+        "Greece": {
+            "pos": 5,
+            "song": "Olou Tou Kosmou tin Elpida",
+            "performer": "Cleopatra"
+        },
+        "Ireland": {
+            "pos": 1,
+            "song": "Why Me",
+            "performer": "Linda Martin"
+        },
+        "Italy": {
+            "pos": 4,
+            "song": "Rapsodia",
+            "performer": "Mia Martini"
+        },
+        "Malta": {
+            "pos": 3,
+            "song": "Little Child",
+            "performer": "Mary Spiteri"
+        },
+        "United Kingdom": {
+            "pos": 2,
+            "song": "One Step Out Of Time",
+            "performer": "Michael Ball"
+        }
+    },
+    "1993": {
+        "France": {
+            "pos": 4,
+            "song": "Mama Corsica",
+            "performer": "Patrick Fiori"
+        },
+        "Ireland": {
+            "pos": 1,
+            "song": "In Your Eyes",
+            "performer": "Niamh Kavanagh"
+        },
+        "Norway": {
+            "pos": 5,
+            "song": "Alle Mine Tankar",
+            "performer": "Silje Vige"
+        },
+        "Switzerland": {
+            "pos": 3,
+            "song": "Moi, Tout Simplement",
+            "performer": "Annie Cotton"
+        },
+        "United Kingdom": {
+            "pos": 2,
+            "song": "Better The Devil You Know",
+            "performer": "Sonia"
+        }
+    },
+    "1994": {
+        "Germany": {
+            "pos": 3,
+            "song": "Wir Geben 'ne Party",
+            "performer": "MeKaDo"
+        },
+        "Hungary": {
+            "pos": 4,
+            "song": "Kinek Mondjam El V\u00e9tkeimet",
+            "performer": "Friderika Bayer"
+        },
+        "Ireland": {
+            "pos": 1,
+            "song": "Rock 'n' Roll Kids",
+            "performer": "Paul Harrington & Charlie McGettigan"
+        },
+        "Malta": {
+            "pos": 5,
+            "song": "More Than Love",
+            "performer": "Moira Stafrace and Christopher Scicluna"
+        },
+        "Poland": {
+            "pos": 2,
+            "song": "To Nie Ja!",
+            "performer": "Edyta G\u00f3rniak"
+        }
+    },
+    "1995": {
+        "Denmark": {
+            "pos": 5,
+            "song": "Fra Mols Til Skagen",
+            "performer": "Aud Wilken"
+        },
+        "France": {
+            "pos": 4,
+            "song": "Il Me Donne Rendez-vous",
+            "performer": "Nathalie Santamaria"
+        },
+        "Norway": {
+            "pos": 1,
+            "song": "Nocturne",
+            "performer": "Secret Garden"
+        },
+        "Spain": {
+            "pos": 2,
+            "song": "Vuelve Conmigo",
+            "performer": "Anabel Conde"
+        },
+        "Sweden": {
+            "pos": 3,
+            "song": "Se P\u00e5 Mej",
+            "performer": "Jan Johansen"
+        }
+    },
+    "1996": {
+        "Croatia": {
+            "pos": 4,
+            "song": "Sveta Ljubav",
+            "performer": "Maja Blagdan"
+        },
+        "Estonia": {
+            "pos": 5,
+            "song": "Kaelakee H\u00e4\u00e4l",
+            "performer": "Ivo Linna and Maarja-Liis Ilus"
+        },
+        "Ireland": {
+            "pos": 1,
+            "song": "The Voice",
+            "performer": "Eimear Quinn"
+        },
+        "Norway": {
+            "pos": 2,
+            "song": "I Evighet",
+            "performer": "Elisabeth Andreasson"
+        },
+        "Sweden": {
+            "pos": 3,
+            "song": "Den Vilda",
+            "performer": "One More Time"
+        }
+    },
+    "1997": {
+        "Cyprus": {
+            "pos": 5,
+            "song": "Mana Mou",
+            "performer": "Chara and Andreas Konstantinou"
+        },
+        "Ireland": {
+            "pos": 2,
+            "song": "Mysterious Woman",
+            "performer": "Marc Roberts"
+        },
+        "Italy": {
+            "pos": 4,
+            "song": "Fiumi Di Parole",
+            "performer": "Jalisse"
+        },
+        "Turkey": {
+            "pos": 3,
+            "song": "Dinle",
+            "performer": "Sebnem Paker and Group Etnic"
+        },
+        "United Kingdom": {
+            "pos": 1,
+            "song": "Love Shine A Light",
+            "performer": "Katrina and The Waves"
+        }
+    },
+    "1998": {
+        "Croatia": {
+            "pos": 5,
+            "song": "Neka Mi Ne Svane",
+            "performer": "Danijela"
+        },
+        "Israel": {
+            "pos": 1,
+            "song": "Diva",
+            "performer": "Dana International"
+        },
+        "Malta": {
+            "pos": 3,
+            "song": "The One That I Love",
+            "performer": "Chiara"
+        },
+        "Netherlands": {
+            "pos": 4,
+            "song": "Hemel En Aarde",
+            "performer": "Edsilia Rombley"
+        },
+        "United Kingdom": {
+            "pos": 2,
+            "song": "Where Are You?",
+            "performer": "Imaani"
+        }
+    },
+    "1999": {
+        "Croatia": {
+            "pos": 4,
+            "song": "Marija Magdalena",
+            "performer": "Doris Dragovi\u0107"
+        },
+        "Germany": {
+            "pos": 3,
+            "song": "Reise Nach Jerusalem - Kud\u00fcs'e Seyahat",
+            "performer": "S\u00fcrpriz"
+        },
+        "Iceland": {
+            "pos": 2,
+            "song": "All Out Of Luck",
+            "performer": "Selma Bj\u00f6rnsd\u00f3ttir"
+        },
+        "Israel": {
+            "pos": 5,
+            "song": "Yom Huledeth",
+            "performer": "Eden"
+        },
+        "Sweden": {
+            "pos": 1,
+            "song": "Take Me To Your Heaven",
+            "performer": "Charlotte Nilsson"
+        }
+    },
+    "2000": {
+        "Denmark": {
+            "pos": 1,
+            "song": "Fly On The Wings Of Love",
+            "performer": "Olsen brothers"
+        },
+        "Estonia": {
+            "pos": 4,
+            "song": "Once In A Lifetime",
+            "performer": "Ines"
+        },
+        "Germany": {
+            "pos": 5,
+            "song": "Wadde Hadde Dudde Da",
+            "performer": "Stefan Raab"
+        },
+        "Latvia": {
+            "pos": 3,
+            "song": "My Star",
+            "performer": "BrainStorm"
+        },
+        "Russia": {
+            "pos": 2,
+            "song": "Solo",
+            "performer": "Alsou"
+        }
+    },
+    "2001": {
+        "Denmark": {
+            "pos": 2,
+            "song": "Never Ever Let You Go",
+            "performer": "Rollo & King"
+        },
+        "Estonia": {
+            "pos": 1,
+            "song": "Everybody",
+            "performer": "Tanel Padar, Dave Benton & 2XL"
+        },
+        "France": {
+            "pos": 4,
+            "song": "Je N'ai Que Mon \u00e2me",
+            "performer": "Natasha Saint-Pier"
+        },
+        "Greece": {
+            "pos": 3,
+            "song": "Die For You",
+            "performer": "Antique"
+        },
+        "Sweden": {
+            "pos": 5,
+            "song": "Listen To Your Heartbeat",
+            "performer": "Friends"
+        }
+    },
+    "2002": {
+        "Estonia": {
+            "pos": 4,
+            "song": "Runaway",
+            "performer": "Sahl\u00e9ne"
+        },
+        "France": {
+            "pos": 5,
+            "song": "Il Faut Du Temps",
+            "performer": "Sandrine Fran\u00e7ois"
+        },
+        "Latvia": {
+            "pos": 1,
+            "song": "I Wanna",
+            "performer": "Marie N"
+        },
+        "Malta": {
+            "pos": 2,
+            "song": "7th Wonder",
+            "performer": "Ira Losco"
+        },
+        "United Kingdom": {
+            "pos": 3,
+            "song": "Come Back",
+            "performer": "Jessica Garlick"
+        }
+    },
+    "2003": {
+        "Belgium": {
+            "pos": 2,
+            "song": "Sanomi",
+            "performer": "Urban Trad"
+        },
+        "Norway": {
+            "pos": 4,
+            "song": "I'm Not Afraid To Move On",
+            "performer": "Jostein Hasselg\u00e5rd"
+        },
+        "Russia": {
+            "pos": 3,
+            "song": "Ne Ver\u0092, Ne Boisia",
+            "performer": "t.A.T.u."
+        },
+        "Sweden": {
+            "pos": 5,
+            "song": "Give Me Your Love",
+            "performer": "Fame"
+        },
+        "Turkey": {
+            "pos": 1,
+            "song": "Everyway That I Can",
+            "performer": "Sertab Erener"
+        }
+    },
+    "2004": {
+        "Cyprus": {
+            "pos": 5,
+            "song": "Stronger Every Minute",
+            "performer": "Lisa Andreas"
+        },
+        "Greece": {
+            "pos": 3,
+            "song": "Shake It",
+            "performer": "Sakis Rouvas"
+        },
+        "Serbia & Montenegro": {
+            "pos": 2,
+            "song": "Lane Moje",
+            "performer": "\u008e\u017deljko Joksimovi\u0107"
+        },
+        "Turkey": {
+            "pos": 4,
+            "song": "For Real",
+            "performer": "Athena"
+        },
+        "Ukraine": {
+            "pos": 1,
+            "song": "Wild Dances",
+            "performer": "Ruslana"
+        }
+    },
+    "2005": {
+        "Greece": {
+            "pos": 1,
+            "song": "My Number One",
+            "performer": "Helena Paparizou"
+        },
+        "Israel": {
+            "pos": 4,
+            "song": "Hasheket Shenish'ar",
+            "performer": "Shiri Maymon"
+        },
+        "Latvia": {
+            "pos": 5,
+            "song": "The War Is Not Over",
+            "performer": "Walter & Kazha"
+        },
+        "Malta": {
+            "pos": 2,
+            "song": "Angel",
+            "performer": "Chiara"
+        },
+        "Romania": {
+            "pos": 3,
+            "song": "Let Me Try",
+            "performer": "Luminita Anghel & Sistem"
+        }
+    },
+    "2006": {
+        "Bosnia & Herzegovina": {
+            "pos": 3,
+            "song": "Lejla",
+            "performer": "Hari Mata Hari"
+        },
+        "Finland": {
+            "pos": 1,
+            "song": "Hard Rock Hallelujah",
+            "performer": "Lordi"
+        },
+        "Romania": {
+            "pos": 4,
+            "song": "Tornero",
+            "performer": "Mihai Traistariu"
+        },
+        "Russia": {
+            "pos": 2,
+            "song": "Never Let You Go",
+            "performer": "Dima Bilan"
+        },
+        "Sweden": {
+            "pos": 5,
+            "song": "Invincible",
+            "performer": "Carola"
+        }
+    },
+    "2007": {
+        "Bulgaria": {
+            "pos": 5,
+            "song": "Water",
+            "performer": "Elitsa Todorova & Stoyan Yankulov"
+        },
+        "Russia": {
+            "pos": 3,
+            "song": "Song # 1",
+            "performer": "Serebro"
+        },
+        "Serbia": {
+            "pos": 1,
+            "song": "Molitva",
+            "performer": "Marija \u0160erifovi\u0107"
+        },
+        "Turkey": {
+            "pos": 4,
+            "song": "Shake It Up Shekerim",
+            "performer": "Kenan Dogulu"
+        },
+        "Ukraine": {
+            "pos": 2,
+            "song": "Dancing Lasha Tumbai",
+            "performer": "Verka Serduchka"
+        }
+    },
+    "2008": {
+        "Armenia": {
+            "pos": 4,
+            "song": "Qele, Qele",
+            "performer": "Sirusho"
+        },
+        "Greece": {
+            "pos": 3,
+            "song": "Secret Combination",
+            "performer": "Kalomira"
+        },
+        "Norway": {
+            "pos": 5,
+            "song": "Hold On Be Strong",
+            "performer": "Maria"
+        },
+        "Russia": {
+            "pos": 1,
+            "song": "Believe",
+            "performer": "Dima Bilan"
+        },
+        "Ukraine": {
+            "pos": 2,
+            "song": "Shady Lady",
+            "performer": "Ani Lorak"
+        }
+    },
+    "2009": {
+        "Azerbaijan": {
+            "pos": 3,
+            "song": "Always",
+            "performer": "AySel & Arash"
+        },
+        "Iceland": {
+            "pos": 2,
+            "song": "Is It True?",
+            "performer": "Yohanna"
+        },
+        "Norway": {
+            "pos": 1,
+            "song": "Fairytale",
+            "performer": "Alexander Rybak"
+        },
+        "Turkey": {
+            "pos": 4,
+            "song": "D\u00fcm Tek Tek",
+            "performer": "Hadise"
+        },
+        "United Kingdom": {
+            "pos": 5,
+            "song": "It's My Time",
+            "performer": "Jade Ewen"
+        }
+    },
+    "2010": {
+        "Azerbaijan": {
+            "pos": 5,
+            "song": "Drip Drop",
+            "performer": "Safura"
+        },
+        "Denmark": {
+            "pos": 4,
+            "song": "In A Moment Like This",
+            "performer": "Chan\u00e9e & N'evergreen"
+        },
+        "Germany": {
+            "pos": 1,
+            "song": "Satellite",
+            "performer": "Lena"
+        },
+        "Romania": {
+            "pos": 3,
+            "song": "Playing With Fire",
+            "performer": "Paula Seling & Ovi"
+        },
+        "Turkey": {
+            "pos": 2,
+            "song": "We Could Be The Same",
+            "performer": "maNga"
+        }
+    },
+    "2011": {
+        "Azerbaijan": {
+            "pos": 1,
+            "song": "Running Scared",
+            "performer": "Ell/Nikki"
+        },
+        "Denmark": {
+            "pos": 5,
+            "song": "New Tomorrow",
+            "performer": "A Friend In London"
+        },
+        "Italy": {
+            "pos": 2,
+            "song": "Madness Of Love",
+            "performer": "Raphael Gualazzi"
+        },
+        "Sweden": {
+            "pos": 3,
+            "song": "Popular",
+            "performer": "Eric Saade"
+        },
+        "Ukraine": {
+            "pos": 4,
+            "song": "Angel",
+            "performer": "Mika Newton"
+        }
+    },
+    "2012": {
+        "Albania": {
+            "pos": 5,
+            "song": "Suus",
+            "performer": "Rona Nishliu"
+        },
+        "Azerbaijan": {
+            "pos": 4,
+            "song": "When The Music Dies",
+            "performer": "Sabina Babayeva"
+        },
+        "Russia": {
+            "pos": 2,
+            "song": "Party For Everybody",
+            "performer": "Buranovskiye Babushki"
+        },
+        "Serbia": {
+            "pos": 3,
+            "song": "Nije Ljubav Stvar",
+            "performer": "\u017deljko Joksimovi\u0107"
+        },
+        "Sweden": {
+            "pos": 1,
+            "song": "Euphoria",
+            "performer": "Loreen"
+        }
+    },
+    "2013": {
+        "Azerbaijan": {
+            "pos": 2,
+            "song": "Hold Me",
+            "performer": "Farid Mammadov"
+        },
+        "Denmark": {
+            "pos": 1,
+            "song": "Only Teardrops",
+            "performer": "Emmelie de Forest"
+        },
+        "Norway": {
+            "pos": 4,
+            "song": "I Feed You My Love",
+            "performer": "Margaret Berger"
+        },
+        "Russia": {
+            "pos": 5,
+            "song": "What If",
+            "performer": "Dina Garipova"
+        },
+        "Ukraine": {
+            "pos": 3,
+            "song": "Gravity",
+            "performer": "Zlata Ognevich"
+        }
+    },
+    "2014": {
+        "Armenia": {
+            "pos": 4,
+            "song": "Not Alone",
+            "performer": "Aram MP3"
+        },
+        "Austria": {
+            "pos": 1,
+            "song": "Rise Like a Phoenix",
+            "performer": "Conchita Wurst"
+        },
+        "Hungary": {
+            "pos": 5,
+            "song": "Running",
+            "performer": "Andr\u00e1s K\u00e1llay-Saunders"
+        },
+        "Netherlands": {
+            "pos": 2,
+            "song": "Calm After The Storm",
+            "performer": "The Common Linnets"
+        },
+        "Sweden": {
+            "pos": 3,
+            "song": "Undo",
+            "performer": "Sanna Nielsen"
+        }
+    },
+    "2015": {
+        "Australia": {
+            "pos": 5,
+            "song": "Tonight Again",
+            "performer": "Guy Sebastian"
+        },
+        "Belgium": {
+            "pos": 4,
+            "song": "Rhythm Inside",
+            "performer": "Lo\u00efc Nottet"
+        },
+        "Italy": {
+            "pos": 3,
+            "song": "Grande Amore",
+            "performer": "Il Volo"
+        },
+        "Russia": {
+            "pos": 2,
+            "song": "A Million Voices",
+            "performer": "Polina Gagarina"
+        },
+        "Sweden": {
+            "pos": 1,
+            "song": "Heroes",
+            "performer": "M\u00e5ns Zelmerl\u00f6w"
+        }
+    },
+    "2016": {
+        "Australia": {
+            "pos": 2,
+            "song": "Sound of Silence",
+            "performer": "Dami Im"
+        },
+        "Bulgaria": {
+            "pos": 4,
+            "song": "If Love Was a Crime",
+            "performer": "Poli Genova"
+        },
+        "Russia": {
+            "pos": 3,
+            "song": "You Are the Only One",
+            "performer": "Sergey Lazarev"
+        },
+        "Sweden": {
+            "pos": 5,
+            "song": "If I Were Sorry",
+            "performer": "Frans"
+        },
+        "Ukraine": {
+            "pos": 1,
+            "song": "1944",
+            "performer": "Jamala"
+        }
+    },
+    "2017": {
+        "Belgium": {
+            "pos": 4,
+            "song": "City Lights",
+            "performer": "Blanche"
+        },
+        "Bulgaria": {
+            "pos": 2,
+            "song": "Beautiful Mess",
+            "performer": "Kristian Kostov"
+        },
+        "Moldova": {
+            "pos": 3,
+            "song": "Hey Mamma",
+            "performer": "Sunstroke Project"
+        },
+        "Portugal": {
+            "pos": 1,
+            "song": "Amar Pelos Dois",
+            "performer": "Salvador Sobral"
+        },
+        "Sweden": {
+            "pos": 5,
+            "song": "I Can't Go On",
+            "performer": "Robin Bengtsson"
+        }
+    },
+    "2018": {
+        "Austria": {
+            "pos": 3,
+            "song": "Nobody But You",
+            "performer": "Ces\u00e1r Sampson"
+        },
+        "Cyprus": {
+            "pos": 2,
+            "song": "Fuego",
+            "performer": "Eleni Foureira"
+        },
+        "Germany": {
+            "pos": 4,
+            "song": "You Let Me Walk Alone",
+            "performer": "Michael Schulte"
+        },
+        "Israel": {
+            "pos": 1,
+            "song": "Toy",
+            "performer": "Netta Barzilai"
+        },
+        "Italy": {
+            "pos": 5,
+            "song": "Non Mi Avete Fatto Niente",
+            "performer": "Ermal Meta & Fabrizio Moro"
+        }
+    },
+    "2019": {
+        "Italy": {
+            "pos": 2,
+            "song": "Soldi",
+            "performer": "Mahmood"
+        },
+        "Netherlands": {
+            "pos": 1,
+            "song": "Arcade",
+            "performer": "Duncan Laurence"
+        },
+        "Russia": {
+            "pos": 3,
+            "song": "Scream",
+            "performer": "Sergey Lazarev"
+        },
+        "Sweden": {
+            "pos": 5,
+            "song": "Too Late for Love",
+            "performer": "John Lundvik"
+        },
+        "Switzerland": {
+            "pos": 4,
+            "song": "She Got Me",
+            "performer": "Luca H\u00e4nni"
+        }
+    },
+    "2021": {
+        "France": {
+            "pos": 2,
+            "song": "Voil\u00e0",
+            "performer": "Barbara Pravi"
+        },
+        "Iceland": {
+            "pos": 4,
+            "song": "10 Years",
+            "performer": "Da\u00f0i & Gagnamagni\u00f0"
+        },
+        "Italy": {
+            "pos": 1,
+            "song": "Zitti e buoni",
+            "performer": "M\u00e5neskin"
+        },
+        "Switzerland": {
+            "pos": 3,
+            "song": "Tout l'univers",
+            "performer": "Gjon's Tears"
+        },
+        "Ukraine": {
+            "pos": 5,
+            "song": "Shum",
+            "performer": "Go_A"
+        }
+    },
+    "2022": {
+        "Serbia": {
+            "pos": 5,
+            "song": "In Corpore Sano",
+            "performer": "Konstrakta"
+        },
+        "Spain": {
+            "pos": 3,
+            "song": "SloMo",
+            "performer": "Chanel"
+        },
+        "Sweden": {
+            "pos": 4,
+            "song": "Hold Me Closer",
+            "performer": "Cornelia Jakobs"
+        },
+        "Ukraine": {
+            "pos": 1,
+            "song": "Stefania",
+            "performer": "Kalush Orchestra"
+        },
+        "United Kingdom": {
+            "pos": 2,
+            "song": "Space Man",
+            "performer": "Sam Ryder"
+        }
+    },
+    "2023": {
+        "Finland": {
+            "pos": 2,
+            "song": "Cha Cha Cha",
+            "performer": "K\u00e4\u00e4rij\u00e4"
+        },
+        "Israel": {
+            "pos": 3,
+            "song": "Unicorn",
+            "performer": "Noa Kirel"
+        },
+        "Italy": {
+            "pos": 4,
+            "song": "Due vite",
+            "performer": "Marco Mengoni"
+        },
+        "Norway": {
+            "pos": 5,
+            "song": "Queen of Kings",
+            "performer": "Alessandra"
+        },
+        "Sweden": {
+            "pos": 1,
+            "song": "Tattoo",
+            "performer": "Loreen"
+        }
+    }
+}
