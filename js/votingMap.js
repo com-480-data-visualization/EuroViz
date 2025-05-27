@@ -5,116 +5,121 @@ let selectedCountry = null;
 
 // Mapping of country codes to country names
 const country_dict = {
-    "al": "Albania",
-    "am": "Armenia",
-    "au": "Australia",
-    "at": "Austria",
-    "az": "Azerbaijan",
-    "by": "Belarus",
-    "be": "Belgium",
-    "ba": "Bosnia & Herzegovina",
-    "bg": "Bulgaria",
-    "hr": "Croatia",
-    "cy": "Cyprus",
-    "cz": "Czech Republic",
-    "dk": "Denmark",
-    "ee": "Estonia",
-    "fi": "Finland",
-    "fr": "France",
-    "ge": "Georgia",
-    "de": "Germany",
-    "gr": "Greece",
-    "hu": "Hungary",
-    "is": "Iceland",
-    "ie": "Ireland",
-    "il": "Israel",
-    "it": "Italy",
-    "lv": "Latvia",
-    "lt": "Lithuania",
-    "lu": "Luxembourg",
-    "mt": "Malta",
-    "md": "Moldova",
-    "mc": "Monaco",
-    "me": "Montenegro",
-    "ma": "Morocco",
-    "nl": "Netherlands",
-    "mk": "North Macedonia",
-    "no": "Norway",
-    "pl": "Poland",
-    "pt": "Portugal",
-    "ro": "Romania",
-    "ru": "Russia",
-    "sm": "San Marino",
-    "rs": "Serbia",
-    "cs": "Serbia & Montenegro",
-    "sk": "Slovakia",
-    "si": "Slovenia",
-    "es": "Spain",
-    "se": "Sweden",
-    "ch": "Switzerland",
-    "tr": "Turkey",
-    "ua": "Ukraine",
-    "gb": "United Kingdom",
-    "yu": "Yugoslavia"
-}
-
+  al: "Albania",
+  am: "Armenia",
+  au: "Australia",
+  at: "Austria",
+  az: "Azerbaijan",
+  by: "Belarus",
+  be: "Belgium",
+  ba: "Bosnia & Herzegovina",
+  bg: "Bulgaria",
+  hr: "Croatia",
+  cy: "Cyprus",
+  cz: "Czech Republic",
+  dk: "Denmark",
+  ee: "Estonia",
+  fi: "Finland",
+  fr: "France",
+  ge: "Georgia",
+  de: "Germany",
+  gr: "Greece",
+  hu: "Hungary",
+  is: "Iceland",
+  ie: "Ireland",
+  il: "Israel",
+  it: "Italy",
+  lv: "Latvia",
+  lt: "Lithuania",
+  lu: "Luxembourg",
+  mt: "Malta",
+  md: "Moldova",
+  mc: "Monaco",
+  me: "Montenegro",
+  ma: "Morocco",
+  nl: "Netherlands",
+  mk: "North Macedonia",
+  no: "Norway",
+  pl: "Poland",
+  pt: "Portugal",
+  ro: "Romania",
+  ru: "Russia",
+  sm: "San Marino",
+  rs: "Serbia",
+  cs: "Serbia & Montenegro",
+  sk: "Slovakia",
+  si: "Slovenia",
+  es: "Spain",
+  se: "Sweden",
+  ch: "Switzerland",
+  tr: "Turkey",
+  ua: "Ukraine",
+  gb: "United Kingdom",
+  yu: "Yugoslavia",
+};
 
 let countryPointsByYearTotal = {};
 let countryPointsByYearTele = {};
 let countryPointsByYearJury = {};
 
 // Load the CSV voting data
-d3.csv('../pre-processing/votes.csv').then(function(data) {
-  data.forEach(d => {
-    const year = +d.year;
-    const from = country_dict[d.from_country] || d.from_country;
-    const to = country_dict[d.to_country] || d.to_country;
+d3.csv("../pre-processing/votes.csv")
+  .then(function (data) {
+    data.forEach((d) => {
+      const year = +d.year;
+      const from = country_dict[d.from_country] || d.from_country;
+      const to = country_dict[d.to_country] || d.to_country;
 
-    // Load total points
-    const totalPoints = +d.total_points || 0;
-    if (!countryPointsByYearTotal[year]) countryPointsByYearTotal[year] = {};
-    if (!countryPointsByYearTotal[year][from]) countryPointsByYearTotal[year][from] = {};
-    countryPointsByYearTotal[year][from][to] = totalPoints;
+      // Load total points
+      const totalPoints = +d.total_points || 0;
+      if (!countryPointsByYearTotal[year]) countryPointsByYearTotal[year] = {};
+      if (!countryPointsByYearTotal[year][from])
+        countryPointsByYearTotal[year][from] = {};
+      countryPointsByYearTotal[year][from][to] = totalPoints;
 
-    // Load tele points
-    const telePoints = +d.tele_points || 0;
-    if (!countryPointsByYearTele[year]) countryPointsByYearTele[year] = {};
-    if (!countryPointsByYearTele[year][from]) countryPointsByYearTele[year][from] = {};
-    countryPointsByYearTele[year][from][to] = telePoints;
+      // Load tele points
+      const telePoints = +d.tele_points || 0;
+      if (!countryPointsByYearTele[year]) countryPointsByYearTele[year] = {};
+      if (!countryPointsByYearTele[year][from])
+        countryPointsByYearTele[year][from] = {};
+      countryPointsByYearTele[year][from][to] = telePoints;
 
-    // Load jury points
-    const juryPoints = +d.jury_points || 0;
-    if (!countryPointsByYearJury[year]) countryPointsByYearJury[year] = {};
-    if (!countryPointsByYearJury[year][from]) countryPointsByYearJury[year][from] = {};
-    countryPointsByYearJury[year][from][to] = juryPoints;
+      // Load jury points
+      const juryPoints = +d.jury_points || 0;
+      if (!countryPointsByYearJury[year]) countryPointsByYearJury[year] = {};
+      if (!countryPointsByYearJury[year][from])
+        countryPointsByYearJury[year][from] = {};
+      countryPointsByYearJury[year][from][to] = juryPoints;
+    });
+
+    countryPointsByYear = countryPointsByYearTotal;
+
+    renderMap(selectedYear, path.projection());
+
+    // Add years to the year select dropdown
+    const yearSelect = document.getElementById("year-select");
+    if (yearSelect) {
+      const yearsSet = new Set([
+        ...Object.keys(countryPointsByYearTotal),
+        ...Object.keys(countryPointsByYearTele),
+        ...Object.keys(countryPointsByYearJury),
+      ]);
+      const years = Array.from(yearsSet)
+        .map(Number)
+        .sort((a, b) => a - b);
+      yearSelect.innerHTML = "";
+      years.forEach((year) => {
+        const option = document.createElement("option");
+        option.value = year;
+        option.textContent = year;
+        yearSelect.appendChild(option);
+      });
+      yearSelect.value = selectedYear;
+    }
+  })
+  .catch(function (error) {
+    console.error("Error in loading voting data:", error);
   });
-
-  countryPointsByYear = countryPointsByYearTotal;
-
-  renderMap(selectedYear, path.projection());
-
-// Add years to the year select dropdown
-const yearSelect = document.getElementById("year-select");
-if (yearSelect) {
-  const yearsSet = new Set([
-    ...Object.keys(countryPointsByYearTotal),
-    ...Object.keys(countryPointsByYearTele),
-    ...Object.keys(countryPointsByYearJury)
-  ]);
-  const years = Array.from(yearsSet).map(Number).sort((a, b) => a - b);
-  yearSelect.innerHTML = "";
-  years.forEach(year => {
-    const option = document.createElement("option");
-    option.value = year;
-    option.textContent = year;
-    yearSelect.appendChild(option);
-  });
-  yearSelect.value = selectedYear;
-}
-
-}).catch(function(error) {
-  console.error('Error in loading voting data:', error);
-});
 
 // Event listener for the votes select dropdown
 const votesSelect = document.getElementById("votes-select");
@@ -132,7 +137,6 @@ if (votesSelect) {
   });
 }
 
-
 window.addEventListener("DOMContentLoaded", () => {
   const container = d3.select("#voting-map-container");
   if (!container.empty()) {
@@ -141,7 +145,8 @@ window.addEventListener("DOMContentLoaded", () => {
     if (svg.select("defs").empty()) {
       const defs = svg.append("defs");
 
-      defs.append("marker")
+      defs
+        .append("marker")
         .attr("id", "arrow")
         .attr("viewBox", "2 -3 6 6")
         .attr("refX", 4)
@@ -152,7 +157,8 @@ window.addEventListener("DOMContentLoaded", () => {
         .style("fill", "black")
         .style("stroke", "none");
 
-      defs.append("pattern")
+      defs
+        .append("pattern")
         .attr("id", "diagonalHatch")
         .attr("patternUnits", "userSpaceOnUse")
         .attr("width", 6)
@@ -168,7 +174,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
     svg.attr("width", containerWidth).attr("height", containerHeight);
 
-    const projection = d3.geoMercator()
+    const projection = d3
+      .geoMercator()
       .scale(containerWidth / 5)
       .translate([containerWidth / 5, containerHeight / 1.7]);
 
@@ -177,7 +184,8 @@ window.addEventListener("DOMContentLoaded", () => {
     mapGroup = svg.append("g");
     linkGroup = svg.append("g").attr("id", "line");
 
-    const zoom = d3.zoom()
+    const zoom = d3
+      .zoom()
       .scaleExtent([1, 8])
       .on("zoom", (event) => {
         mapGroup.attr("transform", event.transform);
@@ -185,7 +193,6 @@ window.addEventListener("DOMContentLoaded", () => {
       });
 
     svg.call(zoom);
-
 
     renderMap(selectedYear, projection);
 
@@ -205,9 +212,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-
 async function handleSelectedCountry(countryName, projection) {
-
   if (selectedCountry === countryName) {
     updateInfoDisplay(selectedYear, null, null);
     deselectCountry();
@@ -219,9 +224,14 @@ async function handleSelectedCountry(countryName, projection) {
   // Load capitals data
   const capitals = await loadCountryCoordinates();
 
-  const selectedCapitalCoordinates = await getCaptialCoordinates(capitals, countryName, projection);
+  const selectedCapitalCoordinates = await getCaptialCoordinates(
+    capitals,
+    countryName,
+    projection
+  );
 
-  const pointsGivenToCountries = countryPointsByYear[selectedYear]?.[countryName];
+  const pointsGivenToCountries =
+    countryPointsByYear[selectedYear]?.[countryName];
   if (!pointsGivenToCountries) {
     console.error("No countries found:" + countryName);
     return;
@@ -233,9 +243,9 @@ async function handleSelectedCountry(countryName, projection) {
   // Take top 5 most voted countries
   const top5 = Object.entries(votes)
     .sort((a, b) => b[1] - a[1])
-    .slice(0, 5); 
-  
-  updateInfoDisplay(selectedYear ,selectedCountry, top5);
+    .slice(0, 5);
+
+  updateInfoDisplay(selectedYear, selectedCountry, top5);
 
   // Draw arrows to top 5 countries
   top5.forEach(([toCountry, points]) => {
@@ -260,14 +270,14 @@ function updateInfoDisplay(year, countryName, pointsGivenToCountries) {
   infoDisplay.innerHTML = "";
   if (countryName === null && pointsGivenToCountries == null) {
     //const topFive = topFiveCountriesByYear[year];
-    
+
     const title = document.createElement("h3");
     title.textContent = `Top 5 in ${year}:`;
     infoDisplay.appendChild(title);
     // topFive.forEach(({ country, position, song, artist }) => {
     //   const p = document.createElement("p");
     //   p.textContent = `${position}. ${country} - ${song} by ${artist}`;
-    //   p.classList.add("no-hover"); 
+    //   p.classList.add("no-hover");
     //   infoDisplay.appendChild(p);
     // });
     const p = document.createElement("p");
@@ -275,23 +285,23 @@ function updateInfoDisplay(year, countryName, pointsGivenToCountries) {
     p.classList.add("info-footer", "no-hover");
     infoDisplay.appendChild(p);
     return;
-    
   }
 
   const title = document.createElement("h3");
   title.textContent = `${countryName}'s points:`;
   infoDisplay.appendChild(title);
 
-  const sortedCountries = Object.entries(pointsGivenToCountries)
-    .sort(([, pointsA], [, pointsB]) => pointsB - pointsA); 
+  const sortedCountries = Object.entries(pointsGivenToCountries).sort(
+    ([, pointsA], [, pointsB]) => pointsB - pointsA
+  );
 
   sortedCountries.forEach(([country, points], counter) => {
     const p = document.createElement("p");
     p.textContent = `${counter + 1}: ${points} points`;
-    p.style.cursor = "pointer"; 
+    p.style.cursor = "pointer";
 
     p.addEventListener("click", () => {
-      handleSelectedCountry(country, path.projection()); 
+      handleSelectedCountry(country, path.projection());
     });
     infoDisplay.appendChild(p);
   });
@@ -300,24 +310,26 @@ function updateInfoDisplay(year, countryName, pointsGivenToCountries) {
 async function deselectCountry() {
   selectedCountry = null;
   linkGroup.selectAll("line").remove();
-
 }
 
 async function getCaptialCoordinates(capitals, country, projection) {
-  const countryCapital = capitals[country];
-  if (!countryCapital) return null; 
-  return projection([countryCapital[0], countryCapital[1]]);
+  const result = capitals.features.find(
+    (obj) => obj.properties.country === country
+  );
+  const coordinates = result.geometry.coordinates;
+  if (!coordinates) return null;
+  return projection([coordinates[0], coordinates[1]]);
 }
 
 const loadCountryCoordinates = async () => {
-    const response = await fetch('./data/capitals.json');
-    const countryCoordinates = await response.json();
-    return countryCoordinates; 
+  const response = await fetch("./data/capitals.geojson");
+  const countryCoordinates = await response.json();
+  return countryCoordinates;
 };
 
 function renderMap(year, projection) {
   d3.json("data/map.geo.json")
-    .then(geoData => {
+    .then((geoData) => {
       const features = geoData.features;
 
       mapGroup.selectAll("*").remove();
@@ -326,14 +338,22 @@ function renderMap(year, projection) {
 
       selectedCountry = null;
 
-      mapGroup.selectAll("path")
+      mapGroup
+        .selectAll("path")
         .data(features)
         .enter()
         .append("path")
         .attr("d", path)
         .attr("stroke", "#fff")
-        .attr("fill", d => countryPointsByYear[year]?.[d.properties.name_en] ? "lightgray" : "#ccc")
-        .classed("unavailable", d => !countryPointsByYear[year]?.[d.properties.name_en])
+        .attr("fill", (d) =>
+          countryPointsByYear[year]?.[d.properties.name_en]
+            ? "lightgray"
+            : "#ccc"
+        )
+        .classed(
+          "unavailable",
+          (d) => !countryPointsByYear[year]?.[d.properties.name_en]
+        )
         .on("click", (event, d) => {
           if (countryPointsByYear[year]?.[d.properties.name_en]) {
             const countryName = d.properties.name_en;
@@ -341,5 +361,5 @@ function renderMap(year, projection) {
           }
         });
     })
-    .catch(e => console.error("Error loading data", e));
+    .catch((e) => console.error("Error loading data", e));
 }
