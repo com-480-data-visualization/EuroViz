@@ -20,7 +20,7 @@ loadPlaceholders('header.html', 'header-placeholder', () => {
 
   document.addEventListener("DOMContentLoaded", () => {
     const yearSelect = document.getElementById("year-select");
-    const startYear = 2021; 
+    const startYear = 1957; 
     const endYear = 2023; 
   
     for (let year = endYear; year >= startYear; year--) {

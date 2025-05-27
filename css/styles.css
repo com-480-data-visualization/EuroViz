@@ -48,6 +48,11 @@ body {
   .nav-link:hover {
     text-decoration: underline;
   }
+p {
+  font-size: 10px;
+  font-style: italic;
+
+}
 .nav-link.active {
   text-decoration: underline;
 }
