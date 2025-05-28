@@ -16,12 +16,13 @@
   <main>
     <div id="color-map-container">
       <div id="info-display">  
-        <h3></h3>  
+        <h3></h3>
         <div id="color-legend">
-          <span>Low votes</span>
+          <span class="legend-label">Less points</span>
           <div class="legend-gradient"></div>
-          <span>More votes</span>
+          <span class="legend-label">More points</span>
         </div>
+        <p class="info-p">Click a country to see its points</p>
       </div>
         
       <div id="year-panel">
@@ -33,7 +34,7 @@
       </div>
 
       <svg id="geo-cmap" preserveAspectRatio="xMidYMid meet" viewBox="0 0 800 600"></svg>
-      <div id="country-tooltip" style="display:none; position:absolute; pointer-events:none; z-index:1000; background:white; border:1px solid #333; border-radius:6px; padding:8px; font-size:0.95em; box-shadow:0 2px 8px rgba(0,0,0,0.15);"></div>
+      <div id="country-tooltip"></div>
     </div>
   </main>
 
