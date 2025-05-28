@@ -7,7 +7,7 @@ function loadPlaceholders(file, Id, callback) {
     })
     .catch(error => console.error(`Error loading ${file}:`, error));
 }
-
+// Navigating
 loadPlaceholders('header.html', 'header-placeholder', () => {
   const currentPage = window.location.pathname.split('/').pop();
   const activeLink = document.querySelector(`.nav-link[href="${currentPage}"]`);
@@ -17,7 +17,7 @@ loadPlaceholders('header.html', 'header-placeholder', () => {
 
 });
   loadPlaceholders('footer.html', 'footer-placeholder');
-
+// Add the selector with years (Including 2020)
   document.addEventListener("DOMContentLoaded", () => {
     const yearSelect = document.getElementById("year-select");
     const startYear = 1957; 

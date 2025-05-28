@@ -129,7 +129,7 @@ async function handleSelectedCountry(countryName, projection, isChangeVoteType) 
 
   selectedCountry = countryName;
   linkGroup.selectAll("line").remove();
-
+  
   // Load capitals data
 
   const selectedCapitalCoordinates = await getCaptialCoordinates(
@@ -187,7 +187,7 @@ function renderMap(year, projection) {
           if (countryPointsByYear[d.properties.name_en]) {
             mapGroup.selectAll("path").classed("selected", false);
             d3.select(event.currentTarget).classed("selected", true);
-            
+
             const countryName = d.properties.name_en;
             handleSelectedCountry(countryName, projection, false);
           }
@@ -242,6 +242,10 @@ function updateInfoDisplay(year, countryName, pointsGivenToCountries) {
 
     // If we click the country we select that country
     p.addEventListener("click", () => {
+      mapGroup.selectAll("path").classed("selected", false);
+     mapGroup.selectAll("path")
+            .filter(function(d) { return d.properties.name_en === country; })
+            .classed("selected", true);
       handleSelectedCountry(country, path.projection(), false); 
     });
 
@@ -249,6 +253,8 @@ function updateInfoDisplay(year, countryName, pointsGivenToCountries) {
   });
     const p2 = document.createElement("p");
     p2.textContent = 'Only showing top 5 arrows'
+    p2.style.cursor = "default";
+    p2.classList.add("info-footer", "no-hover");
     infoDisplay.appendChild(p2);
 }
 // If we the user press the same country agian or changes the year

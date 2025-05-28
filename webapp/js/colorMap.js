@@ -59,10 +59,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   selectedYear = yearSelect.value;
 
-  infoDisplayTitle.textContent = selectedYear;
+  infoDisplayTitle.textContent = `Country points in ${selectedYear}`;
   yearSelect.addEventListener("change", (event) => {
     selectedYear = +event.target.value;
-    infoDisplayTitle.textContent = selectedYear;
+    infoDisplayTitle.textContent = `Country points in ${selectedYear}`;
     updateVotingTypeOptions(selectedYear);
     voteType = 0;
     votingTypeSelect.value = 0;
@@ -178,9 +178,9 @@ function updateVotingTypeOptions(selectedYear) {
   votingTypeSelect.innerHTML = "";
   if (selectedYear > 2015) {
     votingTypeSelect.innerHTML = `
-      <option value="0">All votes</option>
-      <option value="1">Tele votes</option>
-      <option value="2">Jury votes</option>
+      <option value="0">All points</option>
+      <option value="1">Tele points</option>
+      <option value="2">Jury points</option>
     `;
   } else {
     votingTypeSelect.innerHTML = `<option value="0">All votes</option>`;

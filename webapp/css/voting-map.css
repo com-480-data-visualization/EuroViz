@@ -21,16 +21,15 @@
     cursor: pointer;
   }
   
-  #geo-map path:hover {
-    fill: lightcoral; 
+#geo-map path:hover {
+    fill: salmon;
+}
 
-  }
+#geo-map path.selected {
+    fill: peru;
+}
 
-    #geo-map path.selected {
-    fill: rosybrown; 
-  }
-
-  #geo-map path.unavailable {
+#geo-map path.unavailable {
     pointer-events: none;
     cursor: not-allowed;
     fill: url(#diagonalHatch);
