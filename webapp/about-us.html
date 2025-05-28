@@ -49,6 +49,13 @@
         link.classList.add('active');
       }
     });
+
+    function showInfo(element) {
+    document.querySelectorAll('.team-member').forEach(person => {
+      if (person !== element) person.classList.remove('active');
+    });
+    element.classList.toggle('active');
+  }
   </script>
 
   <script type="module" src="js/sharedData.js"></script>

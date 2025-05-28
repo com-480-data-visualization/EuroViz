@@ -48,6 +48,29 @@ body {
   .nav-link:hover {
     text-decoration: underline;
   }
+
+
+footer {
+  padding: 20px 0;
+  text-align: center;
+}
+.footer-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline-flex;
+  gap: 20px; 
+}
+.footer-links li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 0.95em;
+}
+
 p {
   font-size: 10px;
   font-style: italic;
