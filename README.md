@@ -8,7 +8,9 @@
 
 [Milestone 1](#milestone-1) • [Milestone 2](#milestone-2) • [Milestone 3](#milestone-3)
 
-## Milestone 1 (21st March, 5pm)
+#### Guide to setup locally and intended usage is in the milestone 3 section 
+
+## Milestone-1
 
 **10% of the final grade**
 
@@ -106,7 +108,7 @@ Our approach is original due to the fact that we combine the data about country 
 
 We have not explored the dataset in any other context besides this course.
 
-## Milestone 2 (18th April, 5pm)
+## Milestone-2
 
 **10% of the final grade**
 
@@ -144,11 +146,75 @@ However, this MVP can be developed into a more extensive visualization. Here are
 
 If there is even more time available to us we could move on from the vote and map part of the dataset and visualization and move on to analyzing other parts of the data. For example the lyrics of songs where we could analyze what languages tend to perform best or what words are most common in winning songs. This could be visualized quite simply in bar graphs. We could also graph differences in jury and televotes for countries by year.
 
-## Milestone 3 (30th May, 5pm)
+## Milestone-3
 
-**80% of the final grade**
+# Setting Up the Project Locally
 
-## Late policy
+Follow these steps to set up and run the web application locally for development and testing.
 
-- < 24h: 80% of the grade for the milestone
-- < 48h: 70% of the grade for the milestone
+---
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/com-480-data-visualization/EuroViz.git
+```
+## Approach 1: *vscode with Live server*
+### 2. Use Visual Studio Code
+  We recommend using Visual Studio Code for running the webapp.
+  Install the Live Server extension, which allows you to run the application with a local server to avoid CORS issues.
+  https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer
+
+### 3. Launch the Application 
+ - Once Live Server is installed:
+ - Open the project in Visual Studio Code.
+ - Open the file webapp/index.html.
+ - Right-click on the file tab and select "Open with Live Server".
+
+  This will launch the web application in your browser.
+
+  We use Live Server specifically to prevent CORS (Cross-Origin Resource Sharing) errors that occur when opening HTML files directly in the browser with Javascript
+
+## Approach 2: *With Python*
+
+### 2. Navigate into webapp
+```bash
+cd webapp
+```
+### 3. Run the server via python
+```bash
+python -m http.server
+```
+### 4. Open the port python used in your browser
+*In out case:*
+```bash
+http://[::]:8000/
+```
+
+# Intended usage
+
+The intended usage of our visualization is to explore how the distribution of points and votes has changed over the years in the finals of the Eurovision Song Contest.
+
+#### Voting map
+The user is first presented with the map we call the "Voting Map". This map represents how the votes were distributed from the different groups. The user can specify a year in the top right corner to update the map with data from that year. When the user has selected a year, they are presented with the top five winners from that year. The user can then choose whether to include all votes, telephone votes, or jury votes.
+
+When a user clicks on a country, arrows are drawn from the selected country to the five countries that received the most votes from it. The info display in the left corner is also updated and shows all the votes the selected country gave away. The info display is interactive as well, so the user can click on a country in that list, and that country will be selected, triggering a redraw of the arrows.
+
+While the arrows are still present, the user can change the voting type in the right corner for example, from jury votes to telephone votes and the application will redraw the arrows using the new data.
+#### color map
+Through the header, the user can navigate to the "Color Map." This choropleth map shows the point distribution across all countries that participated in the final, using a darker blue color for more points and a lighter blue for fewer points. This map gives the user a sense of whether a specific region of the participating countries received more points.
+
+As with the "Voting Map" the user can select a specific year and voting type (total, jury, or telephone points), and the map will update accordingly.
+
+The user could also click on the country to see the exact number of votes they got that year, and from the vote type.
+
+#### Notes on the map pages
+ - When a user selects the year 2020, they will see an empty map and a message in the info display stating that there is no data for this year. This is because Eurovision was paused due to the coronavirus pandemic
+ - Jury votes and telephone votes are a relatively new feature introduced in the contest. If the user selects a year before 2016, the only available voting type is "Total votes/points."
+
+#### About us
+In the about us page the user gets a short introducion on the creators of the webapp.
+
+
+
+
+
