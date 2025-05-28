@@ -1,4 +1,5 @@
 # Project of Data Visualization (COM-480)
+Link to website: [EuroViz](https://com-480-data-visualization.github.io/EuroViz/)
 
 | Student's name | SCIPER |
 | -------------- | ------ |
