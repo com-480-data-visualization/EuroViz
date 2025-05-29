@@ -1,6 +1,9 @@
 # Project of Data Visualization (COM-480)
-Link to website: [EuroViz](https://com-480-data-visualization.github.io/EuroViz/)
-See screencast: [Video](https://github.com/com-480-data-visualization/EuroViz/blob/master/EuroViz_screencast.mp4)
+Link to website: [EuroViz](https://com-480-data-visualization.github.io/EuroViz/)  
+
+See screencast: [Video](https://github.com/com-480-data-visualization/EuroViz/blob/master/EuroViz_screencast.mp4)  
+
+See processbook: [Process book](https://github.com/com-480-data-visualization/EuroViz/blob/master/EuroViz_Process_book.pdf)
 
 
 | Student's name | SCIPER |
@@ -151,8 +154,11 @@ If there is even more time available to us we could move on from the vote and ma
 
 ## Milestone-3
 
-Link to website: [EuroViz](https://com-480-data-visualization.github.io/EuroViz/)
-See screencast: [Video](https://github.com/com-480-data-visualization/EuroViz/blob/master/EuroViz_screencast.mp4)
+Link to website: [EuroViz](https://com-480-data-visualization.github.io/EuroViz/)  
+
+See screencast: [Video](https://github.com/com-480-data-visualization/EuroViz/blob/master/EuroViz_screencast.mp4)  
+
+See processbook: [Process book](https://github.com/com-480-data-visualization/EuroViz/blob/master/EuroViz_Process_book.pdf)
 # Setting Up the Project Locally
 
 Follow these steps to set up and run the web application locally for development and testing.
