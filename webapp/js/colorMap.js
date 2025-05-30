@@ -94,7 +94,7 @@ async function handleSelectedCountry(
   tooltip.style.top = event.clientY + "px";
 }
 
-function renderMap(year) {
+function renderMap() {
   d3.json("data/map.geo.json")
     .then((geoData) => {
       const features = geoData.features;
@@ -170,7 +170,7 @@ const loadCountryYearPoints = async (year) => {
 // load the data and render the map, this is decoupled in voting map
 async function updateCountriesNormalizedPoints(year) {
   countriesNormalizedPoints = await loadCountryYearPoints(year);
-  renderMap(year);
+  renderMap();
 }
 
 function updateVotingTypeOptions(selectedYear) {

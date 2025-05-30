@@ -80,10 +80,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // need year data before render map
     updatedataBasedOnYear(selectedYear).then(() => {;
-      renderMap(selectedYear, projection)});
+      renderMap(projection)});
 
   }
 });
+
 // Load UI components and add event listners to them
 document.addEventListener("DOMContentLoaded", () => {
   const infoDisplayTitle = document.querySelector("#info-display h3");
@@ -108,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
       updateInfoDisplay(selectedYear, null, null)});
       // need year data before render map
     updatedataBasedOnYear(selectedYear).then(() => {;
-      renderMap(selectedYear, projection)});
+      renderMap(projection)});
   });
   votingTypeSelect.addEventListener("change", (event) => {
     voteType = event.target.value;
@@ -139,16 +140,13 @@ async function handleSelectedCountry(countryName, projection, isChangeVoteType) 
   );
 
   const countryVotedFor = countryPointsByYear[countryName];
-  if (!countryVotedFor) {
-    console.error("No countries found:" + countryName);
-    return;
-  }
-  const top5 = Object.entries(countryVotedFor)
+
+  const topFive = Object.entries(countryVotedFor)
     .sort((a, b) => b[1][voteType] - a[1][voteType]);
 
-  updateInfoDisplay(selectedYear ,selectedCountry, top5);
+  updateInfoDisplay(selectedYear ,selectedCountry, topFive);
 
-  top5.slice(0, 5).forEach(([toCountry, points]) => {
+  topFive.slice(0, 5).forEach(([toCountry, points]) => {
     getCaptialCoordinates(capitals, toCountry, projection).then((coords) => {
       if (!coords || !selectedCapitalCoordinates) return;
       linkGroup
@@ -165,7 +163,7 @@ async function handleSelectedCountry(countryName, projection, isChangeVoteType) 
 }
 
 // map Render
-function renderMap(year, projection) {
+function renderMap(projection) {
   d3.json("data/map.geo.json")
     .then((geoData) => {
       const features = geoData.features;
@@ -207,7 +205,7 @@ function updateInfoDisplay(year, countryName, pointsGivenToCountries) {
     return;
   }
   // If no country is selected show top 5 winners for current years
-  if (countryName === null && pointsGivenToCountries == null) {
+  if (countryName === null && pointsGivenToCountries === null) {
     updateLoadTopFiveYear(selectedYear)
 
     const title = document.createElement("h3");
